@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Luat-Lib-API</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>LuatDoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#OpenLuat____Task_______">OpenLuat -- Task 编程 </a></li>
+<li><a href="#____________">在线文档 </a></li>
+<li><a href="#____________">下载地址 </a></li>
+<li><a href="#log_lua">log.lua </a></li>
+<li><a href="#utils_lua">utils.lua </a></li>
+<li><a href="#sys_lua">sys.lua </a></li>
+<li><a href="#console_lua">console.lua </a></li>
+<li><a href="#clib_lua">clib.lua </a></li>
+<li><a href="#led_lua">led.lua </a></li>
+<li><a href="#http_lua">http.lua </a></li>
+<li><a href="#mqtt_lua">mqtt.lua </a></li>
+<li><a href="#socket_lua">socket.lua </a></li>
+</ul>
+
+
+<h2>Manual</h2>
+<ul class="nowrap">
+  <li><strong>readme</strong></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ledTask.html">ledTask</a></li>
+  <li><a href="../modules/test.html">test</a></li>
+  <li><a href="../modules/testLcd.html">testLcd</a></li>
+  <li><a href="../modules/testMqtt.html">testMqtt</a></li>
+  <li><a href="../modules/testSocket.html">testSocket</a></li>
+  <li><a href="../modules/test.html">test</a></li>
+  <li><a href="../modules/AM2320.html">AM2320</a></li>
+  <li><a href="../modules/SSD1306.html">SSD1306</a></li>
+  <li><a href="../modules/SH1106.html">SH1106</a></li>
+  <li><a href="../modules/agps.html">agps</a></li>
+  <li><a href="../modules/audio.html">audio</a></li>
+  <li><a href="../modules/cc.html">cc</a></li>
+  <li><a href="../modules/clib.html">clib</a></li>
+  <li><a href="../modules/common.html">common</a></li>
+  <li><a href="../modules/console.html">console</a></li>
+  <li><a href="../modules/log.html">log</a></li>
+  <li><a href="../modules/gps.html">gps</a></li>
+  <li><a href="../modules/http.html">http</a></li>
+  <li><a href="../modules/led.html">led</a></li>
+  <li><a href="../modules/link.html">link</a></li>
+  <li><a href="../modules/log.html">log</a></li>
+  <li><a href="../modules/misc.html">misc</a></li>
+  <li><a href="../modules/mqtt.html">mqtt</a></li>
+  <li><a href="../modules/net.html">net</a></li>
+  <li><a href="../modules/ntp.html">ntp</a></li>
+  <li><a href="../modules/nvm.html">nvm</a></li>
+  <li><a href="../modules/lib.patch.html">lib.patch</a></li>
+  <li><a href="../modules/cc.html">cc</a></li>
+  <li><a href="../modules/pins.html">pins</a></li>
+  <li><a href="../modules/pm.html">pm</a></li>
+  <li><a href="../modules/record.html">record</a></li>
+  <li><a href="../modules/ril.html">ril</a></li>
+  <li><a href="../modules/sim.html">sim</a></li>
+  <li><a href="../modules/link.html">link</a></li>
+  <li><a href="../modules/sys.html">sys</a></li>
+  <li><a href="../modules/ui.html">ui</a></li>
+  <li><a href="../modules/ntp.html">ntp</a></li>
+  <li><a href="../modules/utils.html">utils</a></li>
+  <li><a href="../modules/wdt.html">wdt</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+
+<h1>OpenLuat</h1>
+
+<blockquote>
+    <p>OpenLuat 基于合宙（AirM2M) 原有Luat平台重构的一个分支，主要是重构了平台代码，增加了基于协程的多线程任务支持，使用户可以快速进行产品的开发，而不用考虑消息的繁琐回调。避免复杂的回调导致类似“goto”那种混淆的逻辑，同时保留了原有的消息回调机制。</p>
+
+    <p>当应用场景需要消息回调的时候，依旧可以使用消息的发布和订阅执行模式进行编程。</p>
+</blockquote>
+
+
+<p><a name="OpenLuat____Task_______"></a></p>
+<h2>OpenLuat -- Task 编程</h2>
+
+<ul>
+    <li><p>OpenLuat 支持多任务编程，利用底层消息机制和Lua原生协程完美融合实现了多线程支持和多任务编程，并且保留了消息机制特有的高实时性和低功耗特性。</p></li>
+    <li><p>OpenLuat 提供了基于线程阻塞的函数--  <code>wait(ms)</code> ，用来帮助用户解决任务需要延时等待的情况，不同于底层rtos.sleep，调用<code>wait(ms)</code>的任务主动释放资源并挂起，直到延时值满足被主调度器恢复运行。</p></li>
+    <li><p>OpenLuat 提供了消息机制的条件等待超时处理函数-- <code>result, data = waitUntil(id, ms)</code>,用来帮助用户解决一些需要等待条件满足立刻恢复任务的情况，并提供了超时调用回调函数的处理方式。返回值用作语句执行结束后做进一步处理用，以满足不同的场景需求。</p></li>
+</ul>
+
+<p><a name="____________"></a></p>
+<h2>在线文档</h2>
+
+<ul>
+    <li>如果你想了解目前已经实现了那些功能，请点击：&lt;<<a href="https://htmlpreview.github.io/?https://github.com/airm2m-open/Luat/master/doc/index.html">参考手册</a>>></li>
+</ul>
+
+<p><a name="____________"></a></p>
+<h2>下载地址</h2>
+
+<ul>
+    <li>如果你想下载这个项目,请点击：<a href="https://github.com/airm2m-open/Luat/archive/master.zip">下载地址</a></li>
+</ul>
+
+<h1>模块介绍</h1>
+
+<p><a name="log_lua"></a></p>
+<h2>log.lua</h2>
+
+<ul>
+    <li><p>trace</p>
+    <blockquote>
+        <p>是极其细节的，例如 uart收到原始数据流，追加buffer的时候 ,这个数据可能是模块调试的时候才需要</p>
+    </blockquote></li>
+    <li><p>debug
+    　> 是一般细节的，例如 uart，buffer追加后的信息，进入相关parse的时候，打印buffer内容或者at指令集的交互</p></li>
+    <li><p>info</p>
+    <blockquote>
+        <p>　是业务级别的， 例如，打开串口了，LCD数据切换了，按键响应了等等</p>
+    </blockquote></li>
+    <li><p>warn</p>
+    <blockquote>
+        <p>这个级别标识有一些不应该出现的信息，不会导致程序崩溃，但是有可能运行结果不正确。</p>
+    </blockquote></li>
+    <li><p>error</p>
+    <blockquote>
+        <p>这个级别的错误通常会写入err文件留作分析</p>
+    </blockquote></li>
+    <li><p>fatal</p>
+    <blockquote>
+        <p>这个级别准备将来做hook，和errdump绑定，意图是模块只能重启， 在"死之前"将相关要搜集的信心dump到err文件中留作分析</p>
+    </blockquote></li>
+</ul>
+
+<p><a name="utils_lua"></a></p>
+<h2>utils.lua</h2>
+<p>- 这个模块是一些扩展方法</p>
+
+<p><a name="sys_lua"></a></p>
+<h2>sys.lua</h2>
+<p>- 这个模块主模块，提供了任务和消息机制的管理</p>
+
+<p><a name="console_lua"></a></p>
+<h2>console.lua</h2>
+<p>- 这个模块是串口控制台，可以利用串口在线调试模块</p>
+
+<p><a name="clib_lua"></a></p>
+<h2>clib.lua</h2>
+<p>- 这个模块是core库的扩展，对core库新增的方法在这个里面</p>
+
+<p><a name="led_lua"></a></p>
+<h2>led.lua</h2>
+<p>- 这个模块包含几种LED的闪烁方法</p>
+
+<p><a name="http_lua"></a></p>
+<h2>http.lua</h2>
+<p>- 这个模块包含了GET,POST,GZIP，用户鉴权等HTTP数据请求的方法</p>
+
+<p><a name="mqtt_lua"></a></p>
+<h2>mqtt.lua</h2>
+<p>- 这个模块包括MQTT的订阅，发布，QOS0/1/2,基于协程</p>
+
+<p><a name="socket_lua"></a></p>
+<h2>socket.lua</h2>
+<p>- 这个模块包含了tcp/udp的创建，连接，发送，关闭，基于协程</p>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2018-03-12 17:43:12 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

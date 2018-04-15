@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Luat-Lib-API</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>LuatDoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ledTask.html">ledTask</a></li>
+  <li><a href="../modules/test.html">test</a></li>
+  <li><a href="../modules/testLcd.html">testLcd</a></li>
+  <li><a href="../modules/testMqtt.html">testMqtt</a></li>
+  <li><a href="../modules/testSocket.html">testSocket</a></li>
+  <li><a href="../modules/test.html">test</a></li>
+  <li><a href="../modules/AM2320.html">AM2320</a></li>
+  <li><a href="../modules/SSD1306.html">SSD1306</a></li>
+  <li><a href="../modules/SH1106.html">SH1106</a></li>
+  <li><a href="../modules/agps.html">agps</a></li>
+  <li><a href="../modules/audio.html">audio</a></li>
+  <li><a href="../modules/cc.html">cc</a></li>
+  <li><a href="../modules/clib.html">clib</a></li>
+  <li><a href="../modules/common.html">common</a></li>
+  <li><a href="../modules/console.html">console</a></li>
+  <li><a href="../modules/log.html">log</a></li>
+  <li><a href="../modules/gps.html">gps</a></li>
+  <li><a href="../modules/http.html">http</a></li>
+  <li><a href="../modules/led.html">led</a></li>
+  <li><a href="../modules/link.html">link</a></li>
+  <li><a href="../modules/log.html">log</a></li>
+  <li><a href="../modules/misc.html">misc</a></li>
+  <li><strong>mqtt</strong></li>
+  <li><a href="../modules/net.html">net</a></li>
+  <li><a href="../modules/ntp.html">ntp</a></li>
+  <li><a href="../modules/nvm.html">nvm</a></li>
+  <li><a href="../modules/lib.patch.html">lib.patch</a></li>
+  <li><a href="../modules/cc.html">cc</a></li>
+  <li><a href="../modules/pins.html">pins</a></li>
+  <li><a href="../modules/pm.html">pm</a></li>
+  <li><a href="../modules/record.html">record</a></li>
+  <li><a href="../modules/ril.html">ril</a></li>
+  <li><a href="../modules/sim.html">sim</a></li>
+  <li><a href="../modules/link.html">link</a></li>
+  <li><a href="../modules/sys.html">sys</a></li>
+  <li><a href="../modules/ui.html">ui</a></li>
+  <li><a href="../modules/ntp.html">ntp</a></li>
+  <li><a href="../modules/utils.html">utils</a></li>
+  <li><a href="../modules/wdt.html">wdt</a></li>
+</ul>
+<h2>Manual</h2>
+<ul class="nowrap">
+  <li><a href="../manual/readme.md.html">readme</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>mqtt</code></h1>
+<p>mqtt client</p>
+<p>
+
+</p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Copyright</strong>: openLuat</li>
+        <li><strong>Release</strong>: 2017.10.24</li>
+        <li><strong>License</strong>: MIT</li>
+        <li><strong>Author</strong>: 小强</li>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#client">client (clientId, keepAlive, username, password, cleanSession, will)</a></td>
+	<td class="summary">mqtt.client() 创建mqtt client实例</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#mqttc:connect">mqttc:connect (host, port, transport)</a></td>
+	<td class="summary">连接mqtt服务器</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#mqttc:subscribe">mqttc:subscribe (topic, qos)</a></td>
+	<td class="summary">mqtt.client:subscribe(topic, qos)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#mqttc:publish">mqttc:publish (topic, payload, qos, retain)</a></td>
+	<td class="summary">mqtt.client:publish(topic, payload, qos, retain)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#mqttc:receive">mqttc:receive (timeout)</a></td>
+	<td class="summary">mqtt.client:receive([timeout])</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#mqttc:disconnect">mqttc:disconnect ()</a></td>
+	<td class="summary">mqtt disconnect</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "client"></a>
+    <strong>client (clientId, keepAlive, username, password, cleanSession, will)</strong>
+    </dt>
+    <dd>
+    mqtt.client() 创建mqtt client实例
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">clientId</span>
+
+
+
+        </li>
+        <li><span class="parameter">keepAlive</span>
+         心跳间隔，默认300秒
+        </li>
+        <li><span class="parameter">username</span>
+         用户名为空请输入nil
+        </li>
+        <li><span class="parameter">password</span>
+         密码为空请输入nil
+        </li>
+        <li><span class="parameter">cleanSession</span>
+         1/0
+        </li>
+        <li><span class="parameter">will</span>
+         遗嘱参数(Last Will/Testament), 若不打开LWT请不要传递该参数，传递参数默认为打开LWT，will.qos, will.retain, will.topic, will.payload
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        result true - 成功，false - 失败
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">mqttc = mqtt.client(<span class="string">"clientid-123"</span>, <span class="keyword">nil</span>, <span class="keyword">nil</span>, <span class="keyword">false</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "mqttc:connect"></a>
+    <strong>mqttc:connect (host, port, transport)</strong>
+    </dt>
+    <dd>
+    连接mqtt服务器
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">host</span>
+         地址
+        </li>
+        <li><span class="parameter">port</span>
+         端口
+        </li>
+        <li><span class="parameter">transport</span>
+         tcp
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        result true - 成功，false - 失败
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">mqttc = mqtt.client(<span class="string">"clientid-123"</span>, <span class="keyword">nil</span>, <span class="keyword">nil</span>, <span class="keyword">false</span>); mqttc:connect(<span class="string">"mqttserver.com"</span>, <span class="number">1883</span>, <span class="string">"tcp"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "mqttc:subscribe"></a>
+    <strong>mqttc:subscribe (topic, qos)</strong>
+    </dt>
+    <dd>
+    mqtt.client:subscribe(topic, qos)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">topic</span>
+
+
+
+        </li>
+        <li><span class="parameter">qos</span>
+         0/1/2
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        result true - 成功，false - 失败
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">mqttc:subscribe(<span class="string">"/abc"</span>, <span class="number">0</span>) <span class="comment">-- subscribe topic "/abc" with qos = 0
+</span>mqttc:subscribe({[<span class="string">"/topic1"</span>] = <span class="number">0</span>, [<span class="string">"/topic2"</span>] = <span class="number">1</span>, [<span class="string">"/topic3"</span>] = <span class="number">2</span>}) <span class="comment">-- subscribe multi topic</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "mqttc:publish"></a>
+    <strong>mqttc:publish (topic, payload, qos, retain)</strong>
+    </dt>
+    <dd>
+    mqtt.client:publish(topic, payload, qos, retain)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">topic</span>
+
+
+
+        </li>
+        <li><span class="parameter">payload</span>
+
+
+
+        </li>
+        <li><span class="parameter">qos</span>
+         0/1/2, default 0
+        </li>
+        <li><span class="parameter">retain</span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        mid mqtt message id
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">mqttc = mqtt.client(<span class="string">"clientid-123"</span>, <span class="keyword">nil</span>, <span class="keyword">nil</span>, <span class="keyword">false</span>)
+mqttc:connect(<span class="string">"mqttserver.com"</span>, <span class="number">1883</span>, <span class="string">"tcp"</span>)
+mqttc:publish(<span class="string">"/topic"</span>, <span class="string">"publish from luat mqtt client"</span>, <span class="number">0</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "mqttc:receive"></a>
+    <strong>mqttc:receive (timeout)</strong>
+    </dt>
+    <dd>
+    mqtt.client:receive([timeout])
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">timeout</span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        result true - 成功，false - 失败</li>
+        <li>
+        data 如果成功返回的时候接收到的服务器发过来的包，如果失败返回的是错误信息</li>
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">true</span>, packet = mqttc:receive()
+<span class="keyword">false</span>, error_message = mqttc:receive()</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "mqttc:disconnect"></a>
+    <strong>mqttc:disconnect ()</strong>
+    </dt>
+    <dd>
+    mqtt disconnect
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        result true - 成功，false - 失败
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">mqttc = mqtt.client(<span class="string">"clientid-123"</span>, <span class="keyword">nil</span>, <span class="keyword">nil</span>, <span class="keyword">false</span>)
+mqttc:connect(<span class="string">"mqttserver.com"</span>, <span class="number">1883</span>, <span class="string">"tcp"</span>)
+process data
+mqttc:disconnect()</pre>
+    </ul>
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2018-03-12 17:43:12 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

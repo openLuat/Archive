@@ -1,0 +1,520 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Luat-Lib-API</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>LuatDoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ledTask.html">ledTask</a></li>
+  <li><a href="../modules/test.html">test</a></li>
+  <li><a href="../modules/testLcd.html">testLcd</a></li>
+  <li><a href="../modules/testMqtt.html">testMqtt</a></li>
+  <li><a href="../modules/testSocket.html">testSocket</a></li>
+  <li><a href="../modules/test.html">test</a></li>
+  <li><a href="../modules/AM2320.html">AM2320</a></li>
+  <li><a href="../modules/SSD1306.html">SSD1306</a></li>
+  <li><a href="../modules/SH1106.html">SH1106</a></li>
+  <li><a href="../modules/agps.html">agps</a></li>
+  <li><a href="../modules/audio.html">audio</a></li>
+  <li><a href="../modules/cc.html">cc</a></li>
+  <li><a href="../modules/clib.html">clib</a></li>
+  <li><a href="../modules/common.html">common</a></li>
+  <li><a href="../modules/console.html">console</a></li>
+  <li><a href="../modules/log.html">log</a></li>
+  <li><strong>gps</strong></li>
+  <li><a href="../modules/http.html">http</a></li>
+  <li><a href="../modules/led.html">led</a></li>
+  <li><a href="../modules/link.html">link</a></li>
+  <li><a href="../modules/log.html">log</a></li>
+  <li><a href="../modules/misc.html">misc</a></li>
+  <li><a href="../modules/mqtt.html">mqtt</a></li>
+  <li><a href="../modules/net.html">net</a></li>
+  <li><a href="../modules/ntp.html">ntp</a></li>
+  <li><a href="../modules/nvm.html">nvm</a></li>
+  <li><a href="../modules/lib.patch.html">lib.patch</a></li>
+  <li><a href="../modules/cc.html">cc</a></li>
+  <li><a href="../modules/pins.html">pins</a></li>
+  <li><a href="../modules/pm.html">pm</a></li>
+  <li><a href="../modules/record.html">record</a></li>
+  <li><a href="../modules/ril.html">ril</a></li>
+  <li><a href="../modules/sim.html">sim</a></li>
+  <li><a href="../modules/link.html">link</a></li>
+  <li><a href="../modules/sys.html">sys</a></li>
+  <li><a href="../modules/ui.html">ui</a></li>
+  <li><a href="../modules/ntp.html">ntp</a></li>
+  <li><a href="../modules/utils.html">utils</a></li>
+  <li><a href="../modules/wdt.html">wdt</a></li>
+</ul>
+<h2>Manual</h2>
+<ul class="nowrap">
+  <li><a href="../manual/readme.md.html">readme</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>gps</code></h1>
+<p>模块功能：GPS模块管理</p>
+<p>
+
+</p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Copyright</strong>: OpenLuat.com</li>
+        <li><strong>Release</strong>: 2017.10.23</li>
+        <li><strong>License</strong>: MIT</li>
+        <li><strong>Author</strong>: 稀饭放姜，朱工</li>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#open">open ()</a></td>
+	<td class="summary">打开GPS模块</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#close">close ()</a></td>
+	<td class="summary">关闭GPS模块</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#restart">restart (r)</a></td>
+	<td class="summary">重启GPS模块</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setup">setup (id, w, m, g, vp)</a></td>
+	<td class="summary">设置GPS模块通信端口</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#read">read ()</a></td>
+	<td class="summary">阻塞模式读取串口数据，需要线程支持</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#writeData">writeData (str)</a></td>
+	<td class="summary">GPS串口写数据操作</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#writeCmd">writeCmd (cmd)</a></td>
+	<td class="summary">GPS串口写命令操作</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#update">update (data)</a></td>
+	<td class="summary">更新星历到GPS模块</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setAerialMode">setAerialMode (gps, glonass, beidou, galieo)</a></td>
+	<td class="summary">设置搜星模式</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#fastFix">fastFix (lat, lng)</a></td>
+	<td class="summary">秒定位命令</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#runMode">runMode (mod, rt, st)</a></td>
+	<td class="summary">GPS模块的运行功耗模式</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "open"></a>
+    <strong>open ()</strong>
+    </dt>
+    <dd>
+    打开GPS模块
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">gps.open()</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "close"></a>
+    <strong>close ()</strong>
+    </dt>
+    <dd>
+    关闭GPS模块
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boole,关闭成功返回true，如果正在更新星历，则返回nil
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">gps.close()</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "restart"></a>
+    <strong>restart (r)</strong>
+    </dt>
+    <dd>
+    重启GPS模块
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">r</span>
+            <span class="types"><span class="type">number</span></span>
+        ,重启方式-0:外部电源重置; 1:热启动; 2:温启动; 3:冷启动
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">gps.restart()</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "setup"></a>
+    <strong>setup (id, w, m, g, vp)</strong>
+    </dt>
+    <dd>
+    设置GPS模块通信端口
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">number</span></span>
+        ,串口号
+        </li>
+        <li><span class="parameter">w</span>
+        ，唤醒GPS模块对应的PIO
+        </li>
+        <li><span class="parameter">m</span>
+        ，mcu发给gps信号的PIO
+        </li>
+        <li><span class="parameter">g</span>
+        , GSP发给MCU信号的PIO
+        </li>
+        <li><span class="parameter">vp</span>
+        ，GPS的电源供给控制PIO
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">gps.setup(<span class="number">2</span>,pio.P0_23,pio.P0_22,pio.P0_21,pio.P0_8)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "read"></a>
+    <strong>read ()</strong>
+    </dt>
+    <dd>
+    阻塞模式读取串口数据，需要线程支持
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        返回以\r\n结尾的一行数据
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> str = gps.read()</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "writeData"></a>
+    <strong>writeData (str)</strong>
+    </dt>
+    <dd>
+    GPS串口写数据操作
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        ,HEX形式的字符串
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">gps.writeData(str)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "writeCmd"></a>
+    <strong>writeCmd (cmd)</strong>
+    </dt>
+    <dd>
+    GPS串口写命令操作
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cmd</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        ,GPS指令(cmd格式："$PGKC149,1,115200*")
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">gps.writeCmd(cmd)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "update"></a>
+    <strong>update (data)</strong>
+    </dt>
+    <dd>
+    更新星历到GPS模块
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        ,星历的十六进制字符表示字符串数据
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boole, 成功返回true，失败返回nil
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">gps.update(data)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "setAerialMode"></a>
+    <strong>setAerialMode (gps, glonass, beidou, galieo)</strong>
+    </dt>
+    <dd>
+    设置搜星模式
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">gps</span>
+            <span class="types"><span class="type">number</span></span>
+        ,GPS定位系统，1是打开，0是关闭
+        </li>
+        <li><span class="parameter">glonass</span>
+            <span class="types"><span class="type">number</span></span>
+        ,俄罗斯Glonass定位系统，1是打开，0是关闭
+        </li>
+        <li><span class="parameter">beidou</span>
+            <span class="types"><span class="type">number</span></span>
+        ,中国北斗定位系统，1是打开，0是关闭
+        </li>
+        <li><span class="parameter">galieo</span>
+            <span class="types"><span class="type">number</span></span>
+        ，Intel 欧盟伽利略定位系统，1是打开0是关闭
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">gps.setAeriaMode(<span class="number">0</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "fastFix"></a>
+    <strong>fastFix (lat, lng)</strong>
+    </dt>
+    <dd>
+    秒定位命令
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lat</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        ,参考坐标纬度
+        </li>
+        <li><span class="parameter">lng</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        ,参考坐标经度
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">gps.fastFix(data)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "runMode"></a>
+    <strong>runMode (mod, rt, st)</strong>
+    </dt>
+    <dd>
+    GPS模块的运行功耗模式
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">mod</span>
+            <span class="types"><span class="type">number</span></span>
+        ,“0”，正常运行模式
+ “1”，周期超低功耗跟踪模式
+ “2”，周期低功耗模式
+ “4”，直接进入超低功耗跟踪模式
+ “8”，自动低功耗模式，可以通过串口唤醒
+ “9”, 自动超低功耗跟踪模式，需要force on来唤醒
+        </li>
+        <li><span class="parameter">rt</span>
+            <span class="types"><span class="type">number</span></span>
+        ,模式1和2的运行时间(ms),模式0的上报间隔
+        </li>
+        <li><span class="parameter">st</span>
+            <span class="types"><span class="type">number</span></span>
+        ,模式1和2的睡眠时间(ms)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">gps.runMode()</pre>
+    </ul>
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2018-03-12 17:43:12 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

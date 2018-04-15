@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Luat-Lib-API</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>LuatDoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ledTask.html">ledTask</a></li>
+  <li><a href="../modules/test.html">test</a></li>
+  <li><a href="../modules/testLcd.html">testLcd</a></li>
+  <li><a href="../modules/testMqtt.html">testMqtt</a></li>
+  <li><a href="../modules/testSocket.html">testSocket</a></li>
+  <li><a href="../modules/test.html">test</a></li>
+  <li><a href="../modules/AM2320.html">AM2320</a></li>
+  <li><a href="../modules/SSD1306.html">SSD1306</a></li>
+  <li><a href="../modules/SH1106.html">SH1106</a></li>
+  <li><a href="../modules/agps.html">agps</a></li>
+  <li><a href="../modules/audio.html">audio</a></li>
+  <li><a href="../modules/cc.html">cc</a></li>
+  <li><a href="../modules/clib.html">clib</a></li>
+  <li><a href="../modules/common.html">common</a></li>
+  <li><a href="../modules/console.html">console</a></li>
+  <li><a href="../modules/log.html">log</a></li>
+  <li><a href="../modules/gps.html">gps</a></li>
+  <li><a href="../modules/http.html">http</a></li>
+  <li><a href="../modules/led.html">led</a></li>
+  <li><a href="../modules/link.html">link</a></li>
+  <li><a href="../modules/log.html">log</a></li>
+  <li><a href="../modules/misc.html">misc</a></li>
+  <li><a href="../modules/mqtt.html">mqtt</a></li>
+  <li><a href="../modules/net.html">net</a></li>
+  <li><a href="../modules/ntp.html">ntp</a></li>
+  <li><a href="../modules/nvm.html">nvm</a></li>
+  <li><a href="../modules/lib.patch.html">lib.patch</a></li>
+  <li><a href="../modules/cc.html">cc</a></li>
+  <li><a href="../modules/pins.html">pins</a></li>
+  <li><a href="../modules/pm.html">pm</a></li>
+  <li><a href="../modules/record.html">record</a></li>
+  <li><strong>ril</strong></li>
+  <li><a href="../modules/sim.html">sim</a></li>
+  <li><a href="../modules/link.html">link</a></li>
+  <li><a href="../modules/sys.html">sys</a></li>
+  <li><a href="../modules/ui.html">ui</a></li>
+  <li><a href="../modules/ntp.html">ntp</a></li>
+  <li><a href="../modules/utils.html">utils</a></li>
+  <li><a href="../modules/wdt.html">wdt</a></li>
+</ul>
+<h2>Manual</h2>
+<ul class="nowrap">
+  <li><a href="../manual/readme.md.html">readme</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>ril</code></h1>
+<p>虚拟串口AT命令交互管理</p>
+<p>
+
+</p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Copyright</strong>: openLuat</li>
+        <li><strong>Release</strong>: 2017.02.13</li>
+        <li><strong>License</strong>: MIT</li>
+        <li><strong>Author</strong>: openLuat</li>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#regrsp">regrsp (head, fnc, typ, formt)</a></td>
+	<td class="summary">注册某个AT命令应答的处理函数</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#regurc">regurc (prefix, handler)</a></td>
+	<td class="summary">注册某个urc的处理函数</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#deregurc">deregurc (prefix)</a></td>
+	<td class="summary">解注册某个urc的处理函数</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#delayfunc">delayfunc ()</a></td>
+	<td class="summary">延时执行某条AT命令的定时器回调</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#request">request (cmd, arg, onrsp, delay)</a></td>
+	<td class="summary">发送AT命令到底层软件</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "regrsp"></a>
+    <strong>regrsp (head, fnc, typ, formt)</strong>
+    </dt>
+    <dd>
+    注册某个AT命令应答的处理函数
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">head</span>
+          此应答对应的AT命令头，去掉了最前面的AT两个字符
+        </li>
+        <li><span class="parameter">fnc</span>
+           AT命令应答的处理函数
+        </li>
+        <li><span class="parameter">typ</span>
+           AT命令的应答类型，取值范围NORESULT,NUMBERIC,SLINE,MLINE,STRING,SPECIAL
+        </li>
+        <li><span class="parameter">formt</span>
+         typ为STRING时，进一步定义STRING中的详细格式
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        bool ,成功返回true，失败false
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ril.regrsp(<span class="string">"+CSQ"</span>, rsp)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "regurc"></a>
+    <strong>regurc (prefix, handler)</strong>
+    </dt>
+    <dd>
+    注册某个urc的处理函数
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">prefix</span>
+
+<pre><code>urc前缀，最前面的连续字符串，包含+、大写字符、数字的组合
+</code></pre>
+
+        </li>
+        <li><span class="parameter">handler</span>
+           urc的处理函数
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ril.regurc(<span class="string">"+CREG"</span>, neturc)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "deregurc"></a>
+    <strong>deregurc (prefix)</strong>
+    </dt>
+    <dd>
+    解注册某个urc的处理函数
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">prefix</span>
+
+<pre><code>urc前缀，最前面的连续字符串，包含+、大写字符、数字的组合
+</code></pre>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">deregurc(<span class="string">"+CREG"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "delayfunc"></a>
+    <strong>delayfunc ()</strong>
+    </dt>
+    <dd>
+    延时执行某条AT命令的定时器回调
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ril.delayfunc()</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "request"></a>
+    <strong>request (cmd, arg, onrsp, delay)</strong>
+    </dt>
+    <dd>
+    发送AT命令到底层软件
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cmd</span>
+           AT命令内容
+        </li>
+        <li><span class="parameter">arg</span>
+           AT命令参数，例如AT+CMGS=12命令执行后，接下来会发送此参数；AT+CIPSEND=14命令执行后，接下来会发送此参数
+        </li>
+        <li><span class="parameter">onrsp</span>
+         AT命令应答的处理函数，只是当前发送的AT命令应答有效，处理之后就失效了
+        </li>
+        <li><span class="parameter">delay</span>
+         延时delay毫秒后，才发送此AT命令
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">ril.request(<span class="string">"AT+CENG=1,1"</span>)</pre></li>
+        <li><pre class="example">ril.request(<span class="string">"AT+CRSM=214,28539,0,0,12,\"64f01064f03064f002fffff\""</span>, <span class="keyword">nil</span>, crsmResponse)</pre></li>
+    </ul>
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2018-03-12 17:43:12 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

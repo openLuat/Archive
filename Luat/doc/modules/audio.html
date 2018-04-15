@@ -1,0 +1,398 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Luat-Lib-API</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>LuatDoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ledTask.html">ledTask</a></li>
+  <li><a href="../modules/test.html">test</a></li>
+  <li><a href="../modules/testLcd.html">testLcd</a></li>
+  <li><a href="../modules/testMqtt.html">testMqtt</a></li>
+  <li><a href="../modules/testSocket.html">testSocket</a></li>
+  <li><a href="../modules/test.html">test</a></li>
+  <li><a href="../modules/AM2320.html">AM2320</a></li>
+  <li><a href="../modules/SSD1306.html">SSD1306</a></li>
+  <li><a href="../modules/SH1106.html">SH1106</a></li>
+  <li><a href="../modules/agps.html">agps</a></li>
+  <li><strong>audio</strong></li>
+  <li><a href="../modules/cc.html">cc</a></li>
+  <li><a href="../modules/clib.html">clib</a></li>
+  <li><a href="../modules/common.html">common</a></li>
+  <li><a href="../modules/console.html">console</a></li>
+  <li><a href="../modules/log.html">log</a></li>
+  <li><a href="../modules/gps.html">gps</a></li>
+  <li><a href="../modules/http.html">http</a></li>
+  <li><a href="../modules/led.html">led</a></li>
+  <li><a href="../modules/link.html">link</a></li>
+  <li><a href="../modules/log.html">log</a></li>
+  <li><a href="../modules/misc.html">misc</a></li>
+  <li><a href="../modules/mqtt.html">mqtt</a></li>
+  <li><a href="../modules/net.html">net</a></li>
+  <li><a href="../modules/ntp.html">ntp</a></li>
+  <li><a href="../modules/nvm.html">nvm</a></li>
+  <li><a href="../modules/lib.patch.html">lib.patch</a></li>
+  <li><a href="../modules/cc.html">cc</a></li>
+  <li><a href="../modules/pins.html">pins</a></li>
+  <li><a href="../modules/pm.html">pm</a></li>
+  <li><a href="../modules/record.html">record</a></li>
+  <li><a href="../modules/ril.html">ril</a></li>
+  <li><a href="../modules/sim.html">sim</a></li>
+  <li><a href="../modules/link.html">link</a></li>
+  <li><a href="../modules/sys.html">sys</a></li>
+  <li><a href="../modules/ui.html">ui</a></li>
+  <li><a href="../modules/ntp.html">ntp</a></li>
+  <li><a href="../modules/utils.html">utils</a></li>
+  <li><a href="../modules/wdt.html">wdt</a></li>
+</ul>
+<h2>Manual</h2>
+<ul class="nowrap">
+  <li><a href="../manual/readme.md.html">readme</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>audio</code></h1>
+<p>模块功能：音频播放</p>
+<p>
+
+</p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Copyright</strong>: openLuat</li>
+        <li><strong>Release</strong>: 2017.10.21</li>
+        <li><strong>License</strong>: MIT</li>
+        <li><strong>Author</strong>: 稀饭放姜</li>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#play">play (fn)</a></td>
+	<td class="summary">播放音频文件</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#stop">stop ()</a></td>
+	<td class="summary">停止播放当前音频文件</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#play_utf8_tts">play_utf8_tts (s)</a></td>
+	<td class="summary">播放TTS文件</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#play_gb2312_tts">play_gb2312_tts (s)</a></td>
+	<td class="summary">播放TTS文件</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#stop_tts">stop_tts ()</a></td>
+	<td class="summary">停止播放TTS文件</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setChannel">setChannel (chan)</a></td>
+	<td class="summary">设置播放通道</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setVolume">setVolume (vol)</a></td>
+	<td class="summary">设置音量</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setMicVolume">setMicVolume (vol)</a></td>
+	<td class="summary">设置麦克音量</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#chime">chime ()</a></td>
+	<td class="summary">TTS播报当前时间</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "play"></a>
+    <strong>play (fn)</strong>
+    </dt>
+    <dd>
+    播放音频文件
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">fn</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         ,包含路径的文件名,如果是flash内置路径为"/ldata/"
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boole ,true 播放成功，false，播放失败
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> let = audio.play(<span class="string">"/ldata/call.mp3"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "stop"></a>
+    <strong>stop ()</strong>
+    </dt>
+    <dd>
+    停止播放当前音频文件
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">audio.stop()</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "play_utf8_tts"></a>
+    <strong>play_utf8_tts (s)</strong>
+    </dt>
+    <dd>
+    播放TTS文件
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">s</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        ，UTF-8格式的字符串，支持中英文
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">audio.play_utf8_tts(<span class="string">"欢迎光临"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "play_gb2312_tts"></a>
+    <strong>play_gb2312_tts (s)</strong>
+    </dt>
+    <dd>
+    播放TTS文件
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">s</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        ，GB2312格式的字符串，支持中英文
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">audio.play_gb2312_tts(<span class="string">"欢迎光临"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "stop_tts"></a>
+    <strong>stop_tts ()</strong>
+    </dt>
+    <dd>
+    停止播放TTS文件
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">audio.stop_tts()</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "setChannel"></a>
+    <strong>setChannel (chan)</strong>
+    </dt>
+    <dd>
+    设置播放通道
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chan</span>
+            <span class="types"><span class="type">number</span></span>
+        ,播放输出通道：audiocore.HANDSET 、 audiocore.EARPIECE 、 audiocore.LOUDSPEAKER 、audiocore.BLUETOOTH 、 audiocore.FM 、 audiocore.FM<em>LP 、 audiocore.TV 、audiocore.AUX</em>HANSET 、 audiocore.AUX<em>LOUDSPEAKER 、audiocore.AUX</em>EARPIECE 、 audiocore.DUMMY<em>HANDSET 、audiocore.DUMMY</em>AUX<em>HANDSET 、 audiocore.DUMMY</em>LOUDSPEAKER 、audiocore.DUMMY<em>AUX</em>LOUDSPEAKER
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boole , 设置成功返回true,失败返回false
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setVolume"></a>
+    <strong>setVolume (vol)</strong>
+    </dt>
+    <dd>
+    设置音量
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">vol</span>
+            <span class="types"><span class="type">number</span></span>
+        ,音量值为0-7
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boole , 设置成功返回true,失败返回false
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">audio.setVolume(<span class="number">7</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "setMicVolume"></a>
+    <strong>setMicVolume (vol)</strong>
+    </dt>
+    <dd>
+    设置麦克音量
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">vol</span>
+            <span class="types"><span class="type">number</span></span>
+        ,音量值为0-15
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boole , 设置成功返回true,失败返回false
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">audio.setMicVolume(<span class="number">14</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "chime"></a>
+    <strong>chime ()</strong>
+    </dt>
+    <dd>
+    TTS播报当前时间
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2018-03-12 17:43:12 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

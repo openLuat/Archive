@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Luat-Lib-API</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>LuatDoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ledTask.html">ledTask</a></li>
+  <li><a href="../modules/test.html">test</a></li>
+  <li><a href="../modules/testLcd.html">testLcd</a></li>
+  <li><a href="../modules/testMqtt.html">testMqtt</a></li>
+  <li><a href="../modules/testSocket.html">testSocket</a></li>
+  <li><a href="../modules/test.html">test</a></li>
+  <li><a href="../modules/AM2320.html">AM2320</a></li>
+  <li><a href="../modules/SSD1306.html">SSD1306</a></li>
+  <li><a href="../modules/SH1106.html">SH1106</a></li>
+  <li><a href="../modules/agps.html">agps</a></li>
+  <li><a href="../modules/audio.html">audio</a></li>
+  <li><a href="../modules/cc.html">cc</a></li>
+  <li><a href="../modules/clib.html">clib</a></li>
+  <li><a href="../modules/common.html">common</a></li>
+  <li><a href="../modules/console.html">console</a></li>
+  <li><a href="../modules/log.html">log</a></li>
+  <li><a href="../modules/gps.html">gps</a></li>
+  <li><a href="../modules/http.html">http</a></li>
+  <li><strong>led</strong></li>
+  <li><a href="../modules/link.html">link</a></li>
+  <li><a href="../modules/log.html">log</a></li>
+  <li><a href="../modules/misc.html">misc</a></li>
+  <li><a href="../modules/mqtt.html">mqtt</a></li>
+  <li><a href="../modules/net.html">net</a></li>
+  <li><a href="../modules/ntp.html">ntp</a></li>
+  <li><a href="../modules/nvm.html">nvm</a></li>
+  <li><a href="../modules/lib.patch.html">lib.patch</a></li>
+  <li><a href="../modules/cc.html">cc</a></li>
+  <li><a href="../modules/pins.html">pins</a></li>
+  <li><a href="../modules/pm.html">pm</a></li>
+  <li><a href="../modules/record.html">record</a></li>
+  <li><a href="../modules/ril.html">ril</a></li>
+  <li><a href="../modules/sim.html">sim</a></li>
+  <li><a href="../modules/link.html">link</a></li>
+  <li><a href="../modules/sys.html">sys</a></li>
+  <li><a href="../modules/ui.html">ui</a></li>
+  <li><a href="../modules/ntp.html">ntp</a></li>
+  <li><a href="../modules/utils.html">utils</a></li>
+  <li><a href="../modules/wdt.html">wdt</a></li>
+</ul>
+<h2>Manual</h2>
+<ul class="nowrap">
+  <li><a href="../manual/readme.md.html">readme</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>led</code></h1>
+<p>模块功能：LED闪灯模块</p>
+<p>
+
+</p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Copyright</strong>: openLuat</li>
+        <li><strong>Release</strong>: 2018.02.04</li>
+        <li><strong>License</strong>: MIT</li>
+        <li><strong>Author</strong>: smset,稀饭放姜</li>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#blinkPwm">blinkPwm (ledPin, light, dark)</a></td>
+	<td class="summary">闪烁指示灯</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#leveled">leveled (ledPin, bl, bd, cnt, gap)</a></td>
+	<td class="summary">等级指示灯</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#breateLed">breateLed (ledPin)</a></td>
+	<td class="summary">呼吸灯</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "blinkPwm"></a>
+    <strong>blinkPwm (ledPin, light, dark)</strong>
+    </dt>
+    <dd>
+    闪烁指示灯
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ledPin</span>
+        ,ledPin(1)用pins.setup注册返回的方法
+        </li>
+        <li><span class="parameter">light</span>
+        , light-亮灯时间ms
+        </li>
+        <li><span class="parameter">dark</span>
+        , dark-灭灯时间ms
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        null
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">led.blinkPwm(lenPin,<span class="number">500</span>,<span class="number">500</span>)</pre></li>
+        <li><pre class="example">调用函数需要使用任务支持</pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "leveled"></a>
+    <strong>leveled (ledPin, bl, bd, cnt, gap)</strong>
+    </dt>
+    <dd>
+    等级指示灯
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ledPin</span>
+        , ledPin(1)用pins.setup注册返回的方法
+        </li>
+        <li><span class="parameter">bl</span>
+        ,亮灯时间ms
+        </li>
+        <li><span class="parameter">bd</span>
+        ,灭灯时间ms
+        </li>
+        <li><span class="parameter">cnt</span>
+        ,重复次数 (等级的级别,亮灭1次算数字1)
+        </li>
+        <li><span class="parameter">gap</span>
+        ,间隔时间 (每次循环周期的间隔)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">led.leveled(ledPin,<span class="number">200</span>,<span class="number">200</span>,<span class="number">4</span>,<span class="number">1000</span>)</pre></li>
+        <li><pre class="example">调用函数需要使用任务支持</pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "breateLed"></a>
+    <strong>breateLed (ledPin)</strong>
+    </dt>
+    <dd>
+    呼吸灯
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ledPin</span>
+        , 呼吸灯的ledPin(1)用pins.setup注册返回的方法
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">led.breateLed(ledPin)</pre></li>
+        <li><pre class="example">调用函数需要使用任务支持</pre></li>
+    </ul>
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2018-03-12 17:43:12 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

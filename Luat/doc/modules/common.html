@@ -1,0 +1,647 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Luat-Lib-API</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>LuatDoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ledTask.html">ledTask</a></li>
+  <li><a href="../modules/test.html">test</a></li>
+  <li><a href="../modules/testLcd.html">testLcd</a></li>
+  <li><a href="../modules/testMqtt.html">testMqtt</a></li>
+  <li><a href="../modules/testSocket.html">testSocket</a></li>
+  <li><a href="../modules/test.html">test</a></li>
+  <li><a href="../modules/AM2320.html">AM2320</a></li>
+  <li><a href="../modules/SSD1306.html">SSD1306</a></li>
+  <li><a href="../modules/SH1106.html">SH1106</a></li>
+  <li><a href="../modules/agps.html">agps</a></li>
+  <li><a href="../modules/audio.html">audio</a></li>
+  <li><a href="../modules/cc.html">cc</a></li>
+  <li><a href="../modules/clib.html">clib</a></li>
+  <li><strong>common</strong></li>
+  <li><a href="../modules/console.html">console</a></li>
+  <li><a href="../modules/log.html">log</a></li>
+  <li><a href="../modules/gps.html">gps</a></li>
+  <li><a href="../modules/http.html">http</a></li>
+  <li><a href="../modules/led.html">led</a></li>
+  <li><a href="../modules/link.html">link</a></li>
+  <li><a href="../modules/log.html">log</a></li>
+  <li><a href="../modules/misc.html">misc</a></li>
+  <li><a href="../modules/mqtt.html">mqtt</a></li>
+  <li><a href="../modules/net.html">net</a></li>
+  <li><a href="../modules/ntp.html">ntp</a></li>
+  <li><a href="../modules/nvm.html">nvm</a></li>
+  <li><a href="../modules/lib.patch.html">lib.patch</a></li>
+  <li><a href="../modules/cc.html">cc</a></li>
+  <li><a href="../modules/pins.html">pins</a></li>
+  <li><a href="../modules/pm.html">pm</a></li>
+  <li><a href="../modules/record.html">record</a></li>
+  <li><a href="../modules/ril.html">ril</a></li>
+  <li><a href="../modules/sim.html">sim</a></li>
+  <li><a href="../modules/link.html">link</a></li>
+  <li><a href="../modules/sys.html">sys</a></li>
+  <li><a href="../modules/ui.html">ui</a></li>
+  <li><a href="../modules/ntp.html">ntp</a></li>
+  <li><a href="../modules/utils.html">utils</a></li>
+  <li><a href="../modules/wdt.html">wdt</a></li>
+</ul>
+<h2>Manual</h2>
+<ul class="nowrap">
+  <li><a href="../manual/readme.md.html">readme</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>common</code></h1>
+<p>模块功能：通用库函数、编码格式转换、时区时间转换</p>
+<p>
+
+</p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Copyright</strong>: OpenLuat.com</li>
+        <li><strong>Release</strong>: 2017.02.20
+定义模块,导入依赖库</li>
+        <li><strong>License</strong>: MIT</li>
+        <li><strong>Author</strong>: zhutianhua</li>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#ucs2toascii">ucs2toascii (inum)</a></td>
+	<td class="summary">ascii字符串的unicode编码的16进制字符串 转化为 ascii字符串</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#nstrToUcs2Hex">nstrToUcs2Hex (inum)</a></td>
+	<td class="summary">ascii字符串 转化为 ascii字符串的unicode编码的16进制字符串(仅支持数字和+)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#numtobcdnum">numtobcdnum (num)</a></td>
+	<td class="summary">ASCII字符串 转化为 BCD编码格式字符串(仅支持数字和+)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#bcdnumtonum">bcdnumtonum (num)</a></td>
+	<td class="summary">BCD编码格式字符串 转化为 号码ASCII字符串(仅支持数字和+)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ucs2togb2312">ucs2togb2312 (ucs2s)</a></td>
+	<td class="summary">unicode小端编码 转化为 gb2312编码</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gb2312toucs2">gb2312toucs2 (gb2312s)</a></td>
+	<td class="summary">gb2312编码 转化为 unicode小端编码</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ucs2betogb2312">ucs2betogb2312 (ucs2s)</a></td>
+	<td class="summary">unicode大端编码 转化为 gb2312编码</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gb2312toucs2be">gb2312toucs2be (gb2312s)</a></td>
+	<td class="summary">gb2312编码 转化为 unicode大端编码</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ucs2toutf8">ucs2toutf8 (ucs2s)</a></td>
+	<td class="summary">unicode小端编码 转化为 utf8编码</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#utf8toucs2">utf8toucs2 (utf8s)</a></td>
+	<td class="summary">utf8编码 转化为 unicode小端编码</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ucs2betoutf8">ucs2betoutf8 (ucs2s)</a></td>
+	<td class="summary">unicode大端编码 转化为 utf8编码</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#utf8toucs2be">utf8toucs2be (utf8s)</a></td>
+	<td class="summary">utf8编码 转化为 unicode大端编码</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#utf8togb2312">utf8togb2312 (utf8s)</a></td>
+	<td class="summary">utf8编码 转化为 gb2312编码</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gb2312toutf8">gb2312toutf8 (gb2312s)</a></td>
+	<td class="summary">gb2312编码 转化为 utf8编码</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#transftimezone">transftimezone (y, m, d, hh, mm, ss, pretimezone, nowtimezone)</a></td>
+	<td class="summary">当前时区的时间转换为新时区的时间</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "ucs2toascii"></a>
+    <strong>ucs2toascii (inum)</strong>
+    </dt>
+    <dd>
+    ascii字符串的unicode编码的16进制字符串 转化为 ascii字符串
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">inum</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        ：待转换字符串
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string,转换后的字符串
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example"><span class="keyword">local</span> str = common.ucs2toascii(<span class="string">"0031003200330034"</span>)</pre></li>
+        <li><pre class="example">str is <span class="string">"1234"</span></pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "nstrToUcs2Hex"></a>
+    <strong>nstrToUcs2Hex (inum)</strong>
+    </dt>
+    <dd>
+    ascii字符串 转化为 ascii字符串的unicode编码的16进制字符串(仅支持数字和+)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">inum</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        ：待转换字符串
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string,转换后的字符串
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example"><span class="keyword">local</span> str = common.nstrToUcs2Hex(<span class="string">"+1234"</span>)</pre></li>
+        <li><pre class="example">str is <span class="string">"002B0031003200330034"</span></pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "numtobcdnum"></a>
+    <strong>numtobcdnum (num)</strong>
+    </dt>
+    <dd>
+    ASCII字符串 转化为 BCD编码格式字符串(仅支持数字和+)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">num</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        ：待转换字符串
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string,转换后的字符串
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example"><span class="keyword">local</span> str = common.numtobcdnum(<span class="string">"+8618126324567"</span>)</pre></li>
+        <li><pre class="example">str is <span class="string">"91688121364265f7"</span> （表示第<span class="number">1</span>个字节是<span class="number">0x91</span>，第<span class="number">2</span>个字节为<span class="number">0x68</span>，......）</pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "bcdnumtonum"></a>
+    <strong>bcdnumtonum (num)</strong>
+    </dt>
+    <dd>
+    BCD编码格式字符串 转化为 号码ASCII字符串(仅支持数字和+)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">num</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        ：待转换字符串
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string,转换后的字符串
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example"><span class="keyword">local</span> str = common.bcdnumtonum(<span class="string">"91688121364265f7"</span>) <span class="comment">--表示第1个字节是0x91，第2个字节为0x68，......</span></pre></li>
+        <li><pre class="example">str is <span class="string">"+8618126324567"</span></pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ucs2togb2312"></a>
+    <strong>ucs2togb2312 (ucs2s)</strong>
+    </dt>
+    <dd>
+    unicode小端编码 转化为 gb2312编码
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ucs2s</span>
+        ,unicode小端编码数据
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        param,gb2312编码数据
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> gb = common.ucs2togb2312(ucs2s)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "gb2312toucs2"></a>
+    <strong>gb2312toucs2 (gb2312s)</strong>
+    </dt>
+    <dd>
+    gb2312编码 转化为 unicode小端编码
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">gb2312s</span>
+        ,gb2312编码数据
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        param,unicode小端编码数据
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> ucs = common.gb2312toucs2(gb2312s)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ucs2betogb2312"></a>
+    <strong>ucs2betogb2312 (ucs2s)</strong>
+    </dt>
+    <dd>
+    unicode大端编码 转化为 gb2312编码
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ucs2s</span>
+        ,unicode大端编码数据
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        param ,gb2312编码数据
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">gb = common.ucs2betogb2312(ucs2s)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "gb2312toucs2be"></a>
+    <strong>gb2312toucs2be (gb2312s)</strong>
+    </dt>
+    <dd>
+    gb2312编码 转化为 unicode大端编码
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">gb2312s</span>
+        ,gb2312编码数据
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        param,unicode大端编码数据
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> ucs = common.gb2312toucs2be(gb2312s)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ucs2toutf8"></a>
+    <strong>ucs2toutf8 (ucs2s)</strong>
+    </dt>
+    <dd>
+    unicode小端编码 转化为 utf8编码
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ucs2s</span>
+        ,unicode小端编码数据
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        param ,utf8编码数据
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">u8 = common.ucs2toutf8(ucs2s)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "utf8toucs2"></a>
+    <strong>utf8toucs2 (utf8s)</strong>
+    </dt>
+    <dd>
+    utf8编码 转化为 unicode小端编码
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">utf8s</span>
+        ,utf8编码数据
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        param,unicode小端编码数据
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> ucs = common.utf8toucs2(utf8s)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ucs2betoutf8"></a>
+    <strong>ucs2betoutf8 (ucs2s)</strong>
+    </dt>
+    <dd>
+    unicode大端编码 转化为 utf8编码
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ucs2s</span>
+        ,unicode大端编码数据
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        param ,utf8编码数据
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">u8 = common.ucs2betoutf8(ucs2s)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "utf8toucs2be"></a>
+    <strong>utf8toucs2be (utf8s)</strong>
+    </dt>
+    <dd>
+    utf8编码 转化为 unicode大端编码
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">utf8s</span>
+        ,utf8编码数据
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        param,unicode大端编码数据
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> ucs = common.utf8toucs2be(utf8s)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "utf8togb2312"></a>
+    <strong>utf8togb2312 (utf8s)</strong>
+    </dt>
+    <dd>
+    utf8编码 转化为 gb2312编码
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">utf8s</span>
+        ,utf8编码数据
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        param,gb2312编码数据
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> gb = common.utf8togb2312(utf8s)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "gb2312toutf8"></a>
+    <strong>gb2312toutf8 (gb2312s)</strong>
+    </dt>
+    <dd>
+    gb2312编码 转化为 utf8编码
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">gb2312s</span>
+        ,gb2312编码数据
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        param ,utf8编码数据
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> u8 = common.gb2312toutf8(gb2312s)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "transftimezone"></a>
+    <strong>transftimezone (y, m, d, hh, mm, ss, pretimezone, nowtimezone)</strong>
+    </dt>
+    <dd>
+    当前时区的时间转换为新时区的时间
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">y</span>
+        ,当前时区年份
+        </li>
+        <li><span class="parameter">m</span>
+        ,当前时区月份
+        </li>
+        <li><span class="parameter">d</span>
+        ,当前时区天
+        </li>
+        <li><span class="parameter">hh</span>
+        ,当前时区小时
+        </li>
+        <li><span class="parameter">mm</span>
+        ,当前时区分
+        </li>
+        <li><span class="parameter">ss</span>
+        ,当前时区秒
+        </li>
+        <li><span class="parameter">pretimezone</span>
+        ,当前时区
+        </li>
+        <li><span class="parameter">nowtimezone</span>
+        ,新时区
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table ,返回新时区对应的时间，table格式{year,month.day,hour,min,sec}
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2018-03-12 17:43:12 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

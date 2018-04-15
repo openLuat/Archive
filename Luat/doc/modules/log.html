@@ -1,0 +1,384 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Luat-Lib-API</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>LuatDoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ledTask.html">ledTask</a></li>
+  <li><a href="../modules/test.html">test</a></li>
+  <li><a href="../modules/testLcd.html">testLcd</a></li>
+  <li><a href="../modules/testMqtt.html">testMqtt</a></li>
+  <li><a href="../modules/testSocket.html">testSocket</a></li>
+  <li><a href="../modules/test.html">test</a></li>
+  <li><a href="../modules/AM2320.html">AM2320</a></li>
+  <li><a href="../modules/SSD1306.html">SSD1306</a></li>
+  <li><a href="../modules/SH1106.html">SH1106</a></li>
+  <li><a href="../modules/agps.html">agps</a></li>
+  <li><a href="../modules/audio.html">audio</a></li>
+  <li><a href="../modules/cc.html">cc</a></li>
+  <li><a href="../modules/clib.html">clib</a></li>
+  <li><a href="../modules/common.html">common</a></li>
+  <li><a href="../modules/console.html">console</a></li>
+  <li><strong>log</strong></li>
+  <li><a href="../modules/gps.html">gps</a></li>
+  <li><a href="../modules/http.html">http</a></li>
+  <li><a href="../modules/led.html">led</a></li>
+  <li><a href="../modules/link.html">link</a></li>
+  <li><strong>log</strong></li>
+  <li><a href="../modules/misc.html">misc</a></li>
+  <li><a href="../modules/mqtt.html">mqtt</a></li>
+  <li><a href="../modules/net.html">net</a></li>
+  <li><a href="../modules/ntp.html">ntp</a></li>
+  <li><a href="../modules/nvm.html">nvm</a></li>
+  <li><a href="../modules/lib.patch.html">lib.patch</a></li>
+  <li><a href="../modules/cc.html">cc</a></li>
+  <li><a href="../modules/pins.html">pins</a></li>
+  <li><a href="../modules/pm.html">pm</a></li>
+  <li><a href="../modules/record.html">record</a></li>
+  <li><a href="../modules/ril.html">ril</a></li>
+  <li><a href="../modules/sim.html">sim</a></li>
+  <li><a href="../modules/link.html">link</a></li>
+  <li><a href="../modules/sys.html">sys</a></li>
+  <li><a href="../modules/ui.html">ui</a></li>
+  <li><a href="../modules/ntp.html">ntp</a></li>
+  <li><a href="../modules/utils.html">utils</a></li>
+  <li><a href="../modules/wdt.html">wdt</a></li>
+</ul>
+<h2>Manual</h2>
+<ul class="nowrap">
+  <li><a href="../manual/readme.md.html">readme</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>log</code></h1>
+<p>模块功能：系统日志记录,分级别日志工具</p>
+<p>
+
+</p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Copyright</strong>: openLuat</li>
+        <li><strong>Release</strong>: 2017.09.26</li>
+        <li><strong>License</strong>: MIT</li>
+        <li><strong>Author</strong>: 稀饭放姜,wing</li>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#trace">trace (tag, ...)</a></td>
+	<td class="summary">输出trace级别的日志</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#debug">debug (tag, ...)</a></td>
+	<td class="summary">输出debug级别的日志</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#info">info (tag, ...)</a></td>
+	<td class="summary">输出info级别的日志</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#warn">warn (tag, ...)</a></td>
+	<td class="summary">输出warn级别的日志</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#error">error (tag, ...)</a></td>
+	<td class="summary">输出error级别的日志</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#fatal">fatal (tag, ...)</a></td>
+	<td class="summary">输出fatal级别的日志</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#openTrace">openTrace (v, uartid, baudrate)</a></td>
+	<td class="summary">开启或者关闭print的打印输出功能</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "trace"></a>
+    <strong>trace (tag, ...)</strong>
+    </dt>
+    <dd>
+    输出trace级别的日志
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tag</span>
+           ，模块或功能名称，作为日志前缀
+        </li>
+        <li><span class="parameter">...</span>
+           ，日志内容，可变参数
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">trace(<span class="string">'moduleA'</span>, <span class="string">'log content'</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "debug"></a>
+    <strong>debug (tag, ...)</strong>
+    </dt>
+    <dd>
+    输出debug级别的日志
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tag</span>
+           ，模块或功能名称，作为日志前缀
+        </li>
+        <li><span class="parameter">...</span>
+           ，日志内容，可变参数
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="global">debug</span>(<span class="string">'moduleA'</span>, <span class="string">'log content'</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "info"></a>
+    <strong>info (tag, ...)</strong>
+    </dt>
+    <dd>
+    输出info级别的日志
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tag</span>
+           ，模块或功能名称，作为日志前缀
+        </li>
+        <li><span class="parameter">...</span>
+           ，日志内容，可变参数
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">info(<span class="string">'moduleA'</span>, <span class="string">'log content'</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "warn"></a>
+    <strong>warn (tag, ...)</strong>
+    </dt>
+    <dd>
+    输出warn级别的日志
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tag</span>
+           ，模块或功能名称，作为日志前缀
+        </li>
+        <li><span class="parameter">...</span>
+           ，日志内容，可变参数
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">warn(<span class="string">'moduleA'</span>, <span class="string">'log content'</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "error"></a>
+    <strong>error (tag, ...)</strong>
+    </dt>
+    <dd>
+    输出error级别的日志
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tag</span>
+           ，模块或功能名称，作为日志前缀
+        </li>
+        <li><span class="parameter">...</span>
+           ，日志内容，可变参数
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="global">error</span>(<span class="string">'moduleA'</span>, <span class="string">'log content'</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "fatal"></a>
+    <strong>fatal (tag, ...)</strong>
+    </dt>
+    <dd>
+    输出fatal级别的日志
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tag</span>
+           ，模块或功能名称，作为日志前缀
+        </li>
+        <li><span class="parameter">...</span>
+           ，日志内容，可变参数
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">fatal(<span class="string">'moduleA'</span>, <span class="string">'log content'</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "openTrace"></a>
+    <strong>openTrace (v, uartid, baudrate)</strong>
+    </dt>
+    <dd>
+    开启或者关闭print的打印输出功能
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">v</span>
+            <span class="types"><span class="type">bool</span></span>
+        ：false或nil为关闭，其余为开启
+        </li>
+        <li><span class="parameter">uartid</span>
+        ：输出Luatrace的端口：nil表示host口，1表示uart1,2表示uart2
+        </li>
+        <li><span class="parameter">baudrate</span>
+            <span class="types"><span class="type">number</span></span>
+        ：number类型，uartid不为nil时，此参数才有意义，表示波特率，默认115200 \
+ 支持1200,2400,4800,9600,14400,19200,28800,38400,57600,76800,115200,230400,460800,576000,921600,1152000,4000000
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        无
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">sys.openTrace(<span class="number">1</span>,<span class="keyword">nil</span>,<span class="number">921600</span>)</pre>
+    </ul>
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2018-03-12 17:43:12 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
