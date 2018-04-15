@@ -1,0 +1,132 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_AMWATCH_MMENU MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "E&xit",                       IDM_FILE_EXIT
+    END
+    POPUP "&Tool"
+    BEGIN
+        MENUITEM "&Suspend",                    IDM_TOOL_SUSPEND
+        MENUITEM "&Resume",                     IDM_TOOL_RESUME
+        MENUITEM "Sim Insert",                  IDM_TOOL_SIMINSERT
+        MENUITEM "Sim Remove",                  IDM_TOOL_SIMREMOVE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About",                      IDM_HELP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_AMWATCHDLL          ICON                    "AMWatchDll.ico"
+IDI_AMWATCHDLL_SMALL    ICON                    "AMWatchSmall.ico"
+IDI_AMWATCHDLL_ABOUT    ICON                    "AMWatchAbout.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 230, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About AMLuaDebug"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDI_AMWATCHDLL_ABOUT,IDC_STATIC,14,14,21,20
+    LTEXT           "AMLuaDebug, Version 1.2.0",IDC_STATIC,42,14,200,8,SS_NOPREFIX | SS_PATHELLIPSIS
+    LTEXT           "Shanghai Airm2m Communication Technology Co., Ltd",IDC_STATIC,42,26,200,8
+    LTEXT           "Copyright (C) 2016",IDC_STATIC,42,38,200,8
+    DEFPUSHBUTTON   "OK",IDOK,113,41,50,14,WS_GROUP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_FILE                "File"
+    IDS_AMLUADEBUG          "AMLuaDebug"
+    IDS_SET_CLIENT_FAIL     "…Ë÷√¥∞ø⁄ ß∞‹!"
+    IDS_UNKNOWN_FATAL_ERROR "Unknown Fatal Error"
+    IDS_APP_TITLE           "AMLuaDebug"
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,177 @@
+发布时间：2017/3/22 19:05:21
+修改记录：
+    一、demo脚本修改
+        (1)修正demo项目中“uart.setup接口调用时传入的最后一个参数msgmode为2”的编码错误问题
+
+
+
+发布时间：2017/3/21 10:10:21
+修改记录：
+    一、demo脚本修改
+        (1)socket/long_connection项目：修正“发送数据失败后，无法重连上后台”的问题
+        (2)socket/long_connection_transparent项目：修正“发送数据失败后，无法重连上后台”的问题
+        (3)socket/short_connection_flymode项目：优化代码
+
+
+
+发布时间：2017/3/17 13:47:21
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：1.0.9
+        支持lib脚本的最小core软件版本号：Luat_V0006_Air200
+        (1)sys.lua：支持lib脚本的最小core软件版本号：Luat_V0006_Air200
+    二、demo脚本修改
+        (1)uart_at_transparent项目：关闭UART1全PIN脚功能
+        (2)uart_at_transparent_wdt项目：关闭UART1全PIN脚功能
+
+
+
+发布时间：2017/3/16 00:13:21
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：1.0.8
+        支持lib脚本的最小core软件版本号：Luat_V0005_Air200
+        (1)audio.lua：mic增益默认设置为1级，用户如果需要监听功能调大mic增益，直接调用接口audio.setmicrophonegain(audio.MIC_VOL15)即可
+    二、demo脚本修改
+        (1)uart_at_transparent项目：UART1打开全PIN脚功能
+        (2)uart_at_transparent_wdt项目：UART1打开全PIN脚功能
+        (3)socket/long_connection项目：修改默认的后台地址；修正“发送失败后没有自动重连”的问题
+        (4)socket/long_connection_transparent项目：修改默认的后台地址
+        (5)socket/short_connection项目：修改默认的后台地址
+
+
+
+发布时间：2017/3/13 11:55:21
+修改记录：
+    一、demo脚本修改
+        (1)新增uart_at_transparent_wdt项目
+        (2)xiaoman_gps_tracker/gps_test项目：增加gps定位接口和经纬度接口的使用例子
+
+
+
+发布时间：2017/3/7 11:53:21
+修改记录：
+    一、demo脚本修改
+        (1)gpio\gpio_single项目：修正“GPIO15测试”与“指示灯功能”相冲突的问题
+
+
+
+发布时间：2017/3/6 11:53:21
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：1.0.7
+        支持lib脚本的最小core软件版本号：Luat_V0003_Air200
+        (1)net.lua：指示灯增加两种状态“sim卡异常、飞行模式”的闪烁控制
+        (2)sys.lua：指示灯功能默认打开
+    二、demo脚本修改
+        (1)uart_at_transparent项目：配合net.lua修改指示灯闪烁控制
+
+
+
+发布时间：2017/3/1 11:53:21
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：1.0.6
+        支持lib脚本的最小core软件版本号：Luat_V0003_Air200
+        (1)wdt.lua：修正“加载此功能模块后一直重启”的问题；代码添加注释
+    二、demo脚本修改
+        (1)wdt项目：简化lib中wdt功能模块的使用方式，直接require就能正常使用
+        (2)nvm项目：修正“LuaDB加密下载后，模块开机一直重启”的问题
+        (3)product\小蛮GPS定位器\whole_project项目：修正“LuaDB加密下载后，模块开机一直重启”的问题
+        (4)uart_at_transparent项目：at口由uart2修改为uart1
+
+
+
+发布时间：2017/2/28 15:38:21
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：1.0.5
+        支持lib脚本的最小core软件版本号：Luat_V0003_Air200
+        (1)sys.lua：修改opntrace接口的内部实现，不影响外部的调用
+        (2)新增pb.lua电话本管理模块
+        (3)misc.lua：新增setimei接口，设置IMEI
+
+
+
+发布时间：2017/2/27 14:02:21
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：1.0.4
+        支持lib脚本的最小core软件版本号：Luat_V0002_Air200
+        (1)audio.lua：修正TTS接口的问题
+
+    二、demo脚本修改
+        (1)audio项目：支持TTS播放，注意：底层版本必须使用带有TTS标志的Luat_V0002_Air200_TTS.lod以及之后的版本
+
+
+
+发布时间：2017/2/26 08:03:21
+修改记录：
+    一、lib脚本修改（注意，使用此版本的lib脚本，core软件版本号必须是Luat_V0001_Air200或者比Luat_V0001_Air200新的版本，否则开机就会一直重启）
+        lib脚本版本号：1.0.3
+        支持lib脚本的最小core软件版本号：Luat_V0001_Air200
+        (1)dbg.lua和update.lua：新增“上报的项目信息中增加底层core软件版本号”功能
+	(2)audio.lua：A、新增“设置默认的音频通道和音量等级”功能；B、修正“TTS播放接口返回值错误”的问题(底层软件还不支持TTS，目前不能使用TTS)
+	(3)wdt.lua：A、修正“单片机异常时，模块会延时复位单片机”的问题；B、新增“看门狗测试”接口wdt.test()
+
+    二、demo脚本修改
+        (1)新增audio项目：控制音频的播放和停止(底层软件还不支持TTS，目前不能使用TTS)
+	(2)call项目：简化代码
+	(3)script\product\小蛮GPS定位器\whole_project：修正“wdt.lua和lib中的wdt.lua重名”的问题
+	(4)script\demo\xiaoman_gps_tracker\whole_test：修正“wdt.lua和lib中的wdt.lua重名”的问题
+	(5)script\demo\xiaoman_gps_tracker\gps_test：修正“wdt.lua和lib中的wdt.lua重名”的问题
+	(6)所有脚本添加注释
+
+
+
+发布时间：2017/2/21 17:29:21
+修改记录：
+    一、lib脚本修改（注意，使用此版本的lib脚本，core软件版本号必须是Luat_V0001_Air200或者比Luat_V0001_Air200新的版本，否则开机就会一直重启）
+        lib脚本版本号：1.0.2
+        支持lib脚本的最小core软件版本号：Luat_V0001_Air200
+        (1)net.lua中扩展setled接口的参数，可支持未注册上网络时的指示灯控制（默认常灭）
+	(2)sms.lua中，修正“长短信发送时产生过多的内部消息”的问题
+	(3)所有脚本添加注释
+	(4)新增wdt.lua，支持Air200开发板上的硬件看门狗功能
+    二、demo脚本修改
+        (1)uart_at_transparent项目：增加对网络指示灯的控制，一直闪烁，亮100毫秒，灭2900毫秒
+	(2)product\小蛮GPS定位器\whole_project项目：添加注释
+	(3)新增wdt项目：控制Air200开发板上的硬件看门狗
+	(4)sms项目：修正短信发送不能缓存的问题
+
+
+
+发布时间：2017/2/16 17:33:20
+修改记录：
+    一、demo脚本修改
+        (1)新增小蛮GPS定位器的whole_test项目，项目路径为：xiaoman_gps_tracker\whole_test，只能用于小蛮GPS定位器硬件
+           A.支持小蛮GPS定位器的各种硬件功能：gps、gsensor、keypad、指示灯、硬件看门狗
+           B.根据gsensor是否震动，定时开启gps，然后上报位置给服务器，参考sck.lua，注意修改服务器地址
+        (2)新增小蛮GPS定位器的gps_test项目，项目路径为：xiaoman_gps_tracker\gps_test，只能用于小蛮GPS定位器硬件
+           A.重点演示如何使用gps，参考testgps.lua
+        (3)修改gpio\gpio_single项目下的一处笔误(pins.lua中pio.INPUT误写成了pio.INTPUT)
+        (4)为socket\long_connection项目下的test.lua文件添加注释
+
+
+
+发布时间：2017/2/15 13:58:56
+修改记录：
+    一、lib脚本修改（注意，使用此版本的lib脚本，core软件版本号必须是Luat_V0001_Air200或者比Luat_V0001_Air200新的版本，否则开机就会一直重启）
+        lib脚本版本号：1.0.1
+        支持lib脚本的最小core软件版本号：Luat_V0001_Air200
+        (1)ril.lua中新增接口setransparentmode和sendtransparentdata，支持通过物理串口透传AT命令的功能（使用方式参考demo/uart_at_transparent）
+    二、demo脚本修改
+        (1)新增uart_at_transparent项目，可通过开发板上的物理串口uart2，透传AT命令，波特率为115200，数据位8，停止位1，校验位和流控无；
+           PC上的串口调试工具通过串口线和Air200开发板上的uart2相连，配置好串口参数，开发板上电开机，就可以支持AT命令的透传了
+
+
+
+发布时间：2017/2/15 10:37:44
+修改记录：
+    一、lib脚本修改（注意，使用此版本的lib脚本，core软件版本号必须是Luat_V0001_Air200或者比Luat_V0001_Air200新的版本，否则开机就会一直重启）
+        lib脚本版本号：1.0.0
+        支持lib脚本的最小core软件版本号：Luat_V0001_Air200
+        (1)misc.lua中新增getvbatvolt()接口，可实时获取VBAT电池电压
+	(2)sys.lua中新增getcorever()接口，可获取core软件版本号
+	(3)开机初始化检查core软件版本号和lib脚本是否匹配，不匹配的话，保存错误信息，在trace中打印出来，可通过dbg功能模块上报
+	(4)部分脚本文件添加注释，其余文件的注释后续添加

@@ -1,0 +1,134 @@
+发布时间：2017/8/11 14:09
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：1.0.8
+        (1)sim.lua：修正“频繁发送CPIN命令查询sim卡状态”的问题
+
+
+
+发布时间：2017/8/9 23:05
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：1.0.7
+        (1)link.lua：支持小米联通卡的apn配置
+        (2)http.lua：支持http client
+        (3)mqtt.lua：
+		修正“调用disconnect接口后，3倍KEEP ALIVE时间+30秒通信不正常会重启”的问题
+		修正“tmqtt:disconnect接口断开连接后，又自动重连”的问题
+		新增tmqtt:setcleansession接口
+		publish接口支持retain参数的设置
+	(4)update.lua：完善重试机制
+	(5)gps.lua：新增setfixmode和setnemamode接口
+	(6)sim.lua：修正“部分sim卡状态上报延迟”的问题
+	(7)misc.lua：新增getcharger接口
+    二、demo脚本修改
+        (1)新增fs：演示文件操作接口的使用
+        (2)新增format_string：演示数据格式转换接口的使用
+        (3)新增http：支持http client
+        (4)新增update\Luat_iot_server_daemon的demo：支持iot后台的远程升级以及调试信息上报功能
+ 
+
+
+发布时间：2017/6/13 17:14
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：1.0.6
+        (1)lbsloc.lua：超时重试间隔由2秒修改为5秒
+        (2)ril.lua：不再打印CENG的信息
+        (3)agps.lua：精简代码；修正“只搜索到一个小区时无法启动AGPS功能”的问题
+        (4)gps.lua：精简代码；修正“概率性没有输出经纬度类型”的问题
+        (5)net.lua：精简代码
+        (6)audio.lua：修改默认音频通道，修正“通话时本端听不到声音”的问题
+        (7)sms.lua：修正“短信发送和接收功能异常”的问题
+    二、demo脚本修改
+        (1)gps：新增几个gps接口的使用说明
+        (2)audio：默认测试循环播放一个音频文件
+        (3)call：默认呼出的号码修改为10086
+
+
+
+发布时间：2017/6/13 15:07:07
+修改记录：
+    一、lib脚本修改
+	lib脚本版本号：1.0.5
+        (1)link.lua：修正“长连接断开后没有重连”的问题
+	(2)ril.lua：修正“开机后Lua功能概率性启动延迟”的问题
+    二、demo脚本修改
+        (1)socket/long_connection：修改默认后台地址
+
+
+发布时间：2017/6/10 16:25:07
+修改记录：
+    一、lib脚本修改
+	lib脚本版本号：1.0.4
+        (1)功能和Air200保持一致
+	(2)修正长连接断开后没有重连的问题
+    二、demo脚本修改
+        (1)功能和Air200保持一致
+
+
+
+发布时间：2017/5/22 16:25:07
+修改记录：
+    一、lib脚本修改
+	lib脚本版本号：1.0.3
+        (1)增加aliyuniotauth、luatyuniot、aliyuniot库模块
+	(2)在socket库模块里增加close接口
+    二、demo脚本修改
+        (1)luatyun 增加MQTT_TCP连接Luat云后台的demo
+	(2)aliyun 增加MQTT_TCP连接阿里云物联网后台的demo
+	(3)完善一些demo的注释
+
+
+
+发布时间：2017/5/18 9:46:35
+修改记录：
+    一、lib脚本修改
+	lib脚本版本号：1.0.2
+        (1)GPS定位成功，分发内部消息'GPS_FIX_SUC'
+	(2)修正'sys.setworkmode'工作不正常的问题
+        (3)最大的GPS定位卫星个数不正确
+	(4)在misc模块里添加setsn、setimei、isnvalid接口
+	(5)增加record模块
+	(6)在audio模块里添加getfilepath接口
+	(7)增加ntp模块
+	(8)增加lbsloc模块
+	(9)在net模块增加cellinfoind、getmulticell接口
+    二、demo脚本修改
+        (1)xiaoman_gps_tracker\whole_test 增加小蛮GPS定位器的demo
+	(2)write_sn 增加写sn号的demo
+	(3)write_imei 增加写imei号的demo
+	(4)record 增加录音的demo
+	(5)ntp 增加网络时间同步的demo
+	(6)lbs_loc 增加基站定位的demo
+	(7)json 增加json的demo
+	(8)update 增加固件升级的demo
+	(9)uart_prot1 增加通过uart解析外围设备输入报文的demo
+
+
+
+发布时间：2017/05/10 19:13:45
+修改记录：
+    一、lib脚本修改
+	lib脚本版本号：1.0.1
+        (1)优化网络指示灯的流程
+	(2)在pins模块里添加close接口
+        (3)在misc模块里添加getvbatvolt接口
+	(4)在sms模块里添加新短信、长短信接口
+	(5)脚本多次调用sys.opntrace导致模块重启
+	(6)在agps模块里修正一个nil错误
+	(7)无法触发gpio中断
+	(8)加载脚本过程中，若出现语法错误，无法输出对应的错误
+    二、demo脚本修改
+        (1)default 加载sys模块后立即执行sys.opntrace
+	(2)wdt 修改看门狗的pin脚配置
+
+
+
+发布时间：2017/03/15 14:55:21
+修改记录：
+    一、lib脚本修改
+	lib脚本版本号：1.0.0
+        (1)lib库脚本的首版本
+    二、demo脚本修改
+        (1)示例脚本的首版本

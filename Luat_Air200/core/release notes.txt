@@ -1,0 +1,187 @@
+版本号：Luat_V0021_Air200.lod、Luat_V0021_Air200_SSL.lod、Luat_V0021_Air200_SSL_TTS.lod、Luat_V0021_Air200_TTS1.lod、Luat_V0021_Air200_TTS2.lod、Luat_V0021_Air200_TTS3.lod
+发布时间：2018/1/21 22:11
+修改记录：
+    (1)修正“Air200S模块上MIC无声”的问题
+	【问题重要性】：严重
+	【问题影响模块】：Air200S
+	【问题出现概率】：必现；使用到MIC的功能必现，例如录音，双向通话
+	【问题出现原因】：core软件中配置的MIC通道有误，导致MIC无声
+	【问题解决方式】：core软件中配置为正确的MIC通道
+
+
+
+版本号：Luat_V0020_Air200.lod、Luat_V0020_Air200_SSL.lod、Luat_V0020_Air200_SSL_TTS.lod、Luat_V0020_Air200_TTS1.lod、Luat_V0020_Air200_TTS2.lod、Luat_V0020_Air200_TTS3.lod
+发布时间：2017/9/15 13:54
+修改记录：
+    (1)修正“字符串过长时，utf8接口转换出错”的问题
+    (2)增加get_fs_free_size接口，脚本中使用方式为rtos.get_fs_free_size()
+
+
+
+版本号：Luat_V0019_Air200.lod、Luat_V0019_Air200_SSL.lod、Luat_V0019_Air200_SSL_TTS.lod、Luat_V0019_Air200_TTS1.lod、Luat_V0019_Air200_TTS2.lod、Luat_V0019_Air200_TTS3.lod
+发布时间：2017/8/30 15:13
+修改记录：
+    (1)支持“i2c外设无寄存器地址的读写”功能
+    (2)删除“uart1和uart2下载脚本”的功能
+    (3)修正“开机配置GPIO输出时，会有一个几微秒的异常高电平”的问题
+    (4)支持“uart发送数据后异步消息通知”的功能
+    (5)支持“sha1和hmac_sha1算法”
+
+
+
+版本号：Luat_V0018_Air200.lod、Luat_V0018_Air200_SSL.lod、Luat_V0018_Air200_SSL_TTS.lod、Luat_V0018_Air200_TTS1.lod、Luat_V0018_Air200_TTS2.lod、Luat_V0018_Air200_TTS3.lod
+发布时间：2017/8/11 18:02
+修改记录：
+    (1)修正“小概率无法清除垃圾文件”的问题
+
+
+
+版本号：Luat_V0017_Air200.lod、Luat_V0017_Air200_SSL.lod、Luat_V0017_Air200_SSL_TTS.lod、Luat_V0017_Air200_TTS1.lod、Luat_V0017_Air200_TTS2.lod、Luat_V0017_Air200_TTS3.lod
+发布时间：2017/7/22 13:51
+修改记录：
+    (1)修正“移动PLMN被放入FLPMN列表中导致无法注册网络”的问题
+    (2)修正“i2c没有打开，执行关闭动作时会重启”的问题
+    (3)i2c读写超时时间由10ms修改为30毫秒，修改i2c读写超时失败的问题
+
+
+
+版本号：Luat_V0016_Air200.lod、Luat_V0016_Air200_SSL.lod、Luat_V0016_Air200_SSL_TTS.lod、Luat_V0016_Air200_TTS1.lod、Luat_V0016_Air200_TTS2.lod、Luat_V0016_Air200_TTS3.lod
+发布时间：2017/7/4 23:34
+修改记录：
+    (1)修正“不识别某些卡”的问题
+    (2)修正“NVM文件损坏导致重启”的问题
+
+
+
+版本号：Luat_V0015_Air200.lod、Luat_V0015_Air200_SSL.lod、Luat_V0015_Air200_SSL_TTS.lod、Luat_V0015_Air200_TTS1.lod、Luat_V0015_Air200_TTS2.lod、Luat_V0015_Air200_TTS3.lod
+发布时间：2017/6/28 11:00
+修改记录：
+    (1)新增“串口发送数据结束的异步通知”功能
+    (2)删除uart.sync_write接口
+    (3)修正“写文件后立即重启会概率性死机”的问题
+
+
+
+版本号：Luat_V0014_Air200.lod、Luat_V0014_Air200_SSL.lod、Luat_V0014_Air200_SSL_TTS.lod、Luat_V0014_Air200_TTS1.lod、Luat_V0014_Air200_TTS2.lod、Luat_V0014_Air200_TTS3.lod
+发布时间：2017/6/19 15:00
+修改记录：
+    (1)支持“产线的快速校准”功能
+
+
+
+版本号：Luat_V0013_Air200.lod、Luat_V0013_Air200_SSL.lod、Luat_V0013_Air200_SSL_TTS.lod、Luat_V0013_Air200_TTS1.lod、Luat_V0013_Air200_TTS2.lod、Luat_V0013_Air200_TTS3.lod
+发布时间：2017/6/7 16:01
+修改记录：
+    (1)修正“SSL收到数据时，概率性导致一个新建的socket连接失败”的问题
+    (2)uart的缓冲区大小由1024字节扩大为1460字节
+    (3)新增uart.sync_write接口，串口写数据的同步接口
+
+
+
+版本号：Luat_V0012_Air200.lod、Luat_V0012_Air200_SSL.lod、Luat_V0012_Air200_SSL_TTS.lod
+发布时间：2017/5/23 11:03
+修改记录：
+    (1)Luat_V0012_Air200.lod、Luat_V0012_Air200_SSL.lod：脚本空间由原来的384KB扩大为512KB，文件系统空间不变
+    (2)新增Luat_V0012_Air200_SSL_TTS.lod文件，可同时支持SSL和TTS功能，但是脚本空间以及文件系统空间较小，脚本空间256KB，文件系统空间108KB
+
+
+
+版本号：Luat_V0011_Air200.lod、Luat_V0011_Air200_SSL.lod、Luat_V0011_Air200_SSL_TTS.lod、Luat_V0011_Air200_TTS1.lod、Luat_V0011_Air200_TTS2.lod、Luat_V0011_Air200_TTS3.lod
+发布时间：2017/5/18 17:29
+修改记录：
+    (1)修正“PIN21脚用作GPIO8功能使用时，功能异常”的问题
+
+
+
+版本号：Luat_V0010_Air200.lod、Luat_V0010_Air200_SSL.lod、Luat_V0010_Air200_TTS1.lod、Luat_V0010_Air200_TTS2.lod、Luat_V0010_Air200_TTS3.lod
+发布时间：2017/5/4 23:17
+修改记录：
+    (1)支持“ 加密算法库”
+    (2)修正“ string.format接口中X%格式化时输出小写”问题
+    (3)支持SSL功能
+    (4)uart1和uart2都支持“Luat IDE通过uart下载脚本”的功能
+
+
+
+版本号：Luat_V0009_Air200.lod、Luat_V0009_Air200_TTS1.lod、Luat_V0009_Air200_TTS2.lod、Luat_V0009_Air200_TTS3.lod
+发布时间：2017/4/13 06:38
+修改记录：
+    (1)支持“Luat IDE通过uart下载脚本”的功能
+
+
+
+版本号：Luat_V0008_Air200.lod、Luat_V0008_Air200_TTS1.lod、Luat_V0008_Air200_TTS2.lod、Luat_V0008_Air200_TTS3.lod
+发布时间：2017/4/7 15:24
+修改记录：
+    (1)修正“开机时uart2会输出很多数据”的问题
+
+
+
+版本号：Luat_V0007_Air200.lod、Luat_V0007_Air200_TTS1.lod、Luat_V0007_Air200_TTS2.lod、Luat_V0007_Air200_TTS3.lod
+发布时间：2017/3/28 19:43
+修改记录：
+    (1)扩展rtos.setrace接口功能，可以配置uart1或者uart2输出Lua脚本的trace
+    (2)修正“支持TTS的版本，receiver播放音量小”的问题
+
+
+
+==============================
+版本号：Luat_V0006_Air200.lod、Luat_V0006_Air200_TTS1.lod、Luat_V0006_Air200_TTS2.lod、Luat_V0006_Air200_TTS3.lod
+发布时间：2017/3/17 13:18
+修改记录：
+    (1)删除PPP功能和uart1的全pin脚功能；注意：0004和0005版本会引起部分功能不稳定，请开发者不再使用这两个版本
+
+
+
+==============================
+版本号：Luat_V0005_Air200.lod、Luat_V0005_Air200_TTS1.lod、Luat_V0005_Air200_TTS2.lod、Luat_V0005_Air200_TTS3.lod
+发布时间：2017/3/16 00:10
+修改记录：
+    (1)支持音频参数固化在代码中的功能，调大receiver播放增益以及mic增益
+    (2)修正0004版本引入的“Lua应用未使用UART1功能时，UART1可复用为GPIO的引脚电平状态不可控”的问题
+
+
+
+==============================
+版本号：Luat_V0004_Air200.lod、Luat_V0004_Air200_TTS1.lod、Luat_V0004_Air200_TTS2.lod、Luat_V0004_Air200_TTS3.lod
+发布时间：2017/3/13 23:10
+修改记录：
+    (1)支持uart1全pin脚功能，uart1全pin脚功能开启后，用户通过DTR脚控制模块的休眠和唤醒
+    (2)支持PPP功能用到的AT命令
+
+
+
+==============================
+版本号：Luat_V0003_Air200.lod、Luat_V0003_Air200_TTS1.lod、Luat_V0003_Air200_TTS2.lod、Luat_V0003_Air200_TTS3.lod
+发布时间：2017/2/28 15:10
+    (1)新增接口控制Lua的trace输出
+    (2) 发布3个支持TTS功能的版本，文件系统和LuaDB使用的Flash分区大小不同，详情参考http://www.openluat.com/forum.php?mod=viewthread&tid=2393&page=1&extra=#pid6355
+
+
+
+==============================
+版本号：Luat_V0002_Air200_TTS.lod
+发布时间：2017/2/27 13:57
+修改记录：
+    (1)支持TTS功能
+
+
+
+==============================
+版本号：Luat_V0002_Air200.lod
+发布时间：2017/2/22 15:04
+修改记录：
+    (1)支持Lua文件加密，需要配合LuaDB_V2.6及以上版本使用
+    (2)新增脚本运行错误时，延时3秒钟再重启的功能，以解决开机因为脚本语法错误就重启无法看到脚本错误的问题
+    (3)合入其他项目中完善的问题
+	
+	
+	
+==============================
+版本号：Luat_V0001_Air200.lod
+发布时间：2017/2/14 12:55:44
+修改记录：
+    (1)修改底层版本号命名规则
+    (2)修正“连接某些服务器失败”的问题
+    (3)新增“主动查询VBAT电池电量”的接口，脚本调用方式为pmd.param_get()
+    (4)添加版本号查询接口rtos.get_version()

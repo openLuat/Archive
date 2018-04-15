@@ -1,0 +1,371 @@
+发布时间：2017/9/5 13:46
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.2.5
+        (1)sms.lua：修正“收到的长短信没有自动拼接”的问题
+        (2)sys、update、dbg：新增“远程升级或者dbg上报过程中，禁止“语法错误或者sys.restart接口”的重启功能”
+        (3)patch.lua：重新封装json.decode接口，增加decode的返回值。使用方式参考json的demo
+        (4)http.lua：修正“chunk传输数据时解包错误”的问题
+        (5)nvm.lua：修正“table类型参数如果旧值是空表，设置新值时失败”的问题
+        (6)mqtt.lua、mqttssl.lua：支持“用户自定义异常处理程序”的功能
+    二、demo脚本修改
+        (1)json：json.decode接口增加返回值表示解析结果
+        (2)mqtt、mqttssl：支持一种默认的异常处理程序
+        (3)i2c：规范代码
+        (4)update：添加<重要提醒.txt>
+
+
+
+发布时间：2017/8/25 11:07
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.2.4
+        (1)修正某些注释有误的问题
+    二、demo脚本修改
+        (1)完善注释
+        (2)crypto：支持sha1和hmac_sha1算法
+
+
+
+发布时间：2017/8/4 17:51
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.2.3
+        (1)http.lua：支持http client
+        (2)net.lua：修正“联通卡由于PLMN的问题，概率性重启”的问题
+        (3)sys.lua：修正“timer_stop接口无法根据定时器id关闭定时器”的问题
+        (4)mqtt.lua、mqttssl.lua：修正“调用disconnect接口后，3倍KEEP ALIVE时间+30秒通信不正常会重启”的问题
+    二、demo脚本修改
+        (1)新增http：支持http client
+        (2)adc：修改adc id
+
+
+
+发布时间：2017/7/29 23:19
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.2.2
+        (1)mqtt.lua、mqttssl.lua：
+		修正“tmqtt:disconnect接口断开连接后，又自动重连”的问题
+		新增tmqtt:setcleansession接口
+        (2)aliyuniotssl.lua、aliyuniotsslauth.lua：支持阿里云华东2节点
+    二、demo脚本修改
+        (1)crypto：完善注释
+        (2)mqtt、mqtt_ssl：演示tmqtt:setcleansession接口的使用说明
+        (3)新增aliyun_ssl_huadong2：支持阿里云华东2节点
+
+
+
+发布时间：2017/7/18 16:47
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.2.1
+        (1)net.lua：修正“移动PLMN被放入FLPMN列表中导致无法注册网络”的问题
+        (2)audio.lua：支持Air200S音频通道的设置；用户在应用脚本中的main.lua中，定义HARDWARE="Air200S"即可
+    二、demo脚本修改
+        (1)socket_ssl\long_connection的demo：更换服务器CA证书文件
+        (2)新增fs：演示文件操作接口的使用
+        (3)新增dstring_fromat：演示数据格式转换接口的使用
+        (4)uart：新增“uart发送数据完成后，异步消息通知”功能的使用说明
+        (5)新增adc：演示adc功能的使用说明
+
+
+
+发布时间：2017/6/30 14:13
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.2.0
+        (1)sys.lua：
+		底层版本不是最新时，仅打印一个警告，不再上报错误信息到dbg服务器
+		新增“电池电压低于3.4V时，延时1分钟后关机”的功能
+        (2)link.lua：
+		修正“用户设置了激活数据网络失败回调函数后，概率性不会执行回调”的问题
+		新增“设置连接过程和数据发送过程中TCP协议的重连参数”的接口setretrymode
+        (3)mqtt.lua,mqttssl.lua：publish接口支持retain参数的设置
+
+
+发布时间：2017/6/21 10:59
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.1.9
+        (1)sys.lua：
+		新增reguartx接口，可注册uart发送数据完成的回调函数
+		修正“dbg模块不能上报sys.restart原因值”的问题
+		加快Lua内存自动回收速度
+        (2)dbg.lua：修改重启接口的提示前缀
+        (3)link.lua：
+		新增setiperrcb接口，可设置激活IP数据网络超时失败后的回调函数
+		修正“dbg模块、update模块、ntp模块和用户应用socket重连时”的冲突问题
+	(4)update.lua：完善重试机制
+    二、demo脚本修改
+        (1)新增update\Luat_iot_server_daemon的demo：支持iot后台的远程升级以及调试信息上报功能
+
+
+发布时间：2017/6/19 13:14
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.1.8
+        (1)lbsloc.lua：超时重试间隔由2秒修改为5秒
+        (2)sys.lua：修改timer_start接口参数非法时的重启注释
+    二、demo脚本修改
+        (1)所有项目：添加“S3开发板require"wdt"”的代码注释
+
+
+
+发布时间：2017/6/10 00:27
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.1.7
+        (1)lbsloc.lua：优化回调函数的调用时间点
+	(2)link.lua，net.lua：修正“热插拔sim卡时，socket连接状态异常以及指示灯异常”的问题
+
+
+
+发布时间：2017/6/7 17:27
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.1.6
+        (1)factory.lua：删除此模块
+	(2)update.lua：修改一处注释
+    二、demo脚本修改
+        (1)default项目：新增factory.lua
+
+
+
+发布时间：2017/6/1 17:27
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.1.5
+        (1)dbg.lua：新增saverr接口，可上报用户自定义调试信息到dbg服务器
+
+
+
+发布时间：2017/5/24 14:17
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.1.4
+        (1)update.lua：修改Luat物联云升级服务器地址
+	(2)luatiot.lua、luatiotssl.lua：精简Luat物联云使用的topic和登陆报文长度
+	(3)mqtt.lua、mqttssl.lua：新增disconnect和getstatus接口
+	(4)lbsloc.lua：新增度分格式的经纬度输出
+	(5)pb.lua：优化接口
+	(6)sim.lua：新增getstatus接口
+	(7)wdt.lua：新增close接口
+	(8)新增factory.lua：实现模块生产功能测试功能
+    二、demo脚本修改
+        (1)mqtt、mqtt_ssl项目：新增“disconnect和getstatus接口”的测试代码
+	(2)lbs_loc.lua：新增“度分格式的经纬度输出”的测试代码
+	(3)新增pb项目：电话本读写demo项目
+	(4)default项目：支持模块生产功能测试功能
+
+
+
+发布时间：2017/5/11 15:08
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.1.3
+        (1)update.lua：支持“开机自动升级+定时升级+实时升级”功能
+	(2)luatiot.lua、luatiotssl.lua：连接Luat云平台时，支持设备的自动录入功能
+    二、demo脚本修改
+        (1)update/Luat_iot_server项目：新增“开机自动升级+定时升级+实时升级”的使用说明
+        (2)update/user_server项目：新增“开机自动升级+定时升级+实时升级”的使用说明
+	(3)新增write_sn项目：写SN号到设备的demo项目
+
+
+
+发布时间：2017/5/9 15:15
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.1.2
+        (1)lbsloc.lua：支持设备密钥以及GPS位置字符串的查询
+        (2)luatiot.lua、luatiotssl.lua：连接Luat云平台时，支持设备的自动录入功能
+        (3)misc.lua：新增isnvalid接口，判断设备sn是否有效
+	(4)update.lua：兼容用户后台和Luat物联网平台的固件升级功能
+	(5)mqtt.lua、mqtt_ssl.lua：支持mqtt协议的3.1.1版本
+    二、demo脚本修改
+        (1)新增mqtt_ssl项目：MQTT-SSL协议连接后台测试demo项目
+        (2)lbs_loc项目：支持GPS位置字符串的查询
+        (3)luatyun项目：增加对PRODUCT_KEY的使用说明
+        (4)luatyun_ssl项目：增加对PRODUCT_KEY的使用说明
+        (5)新增update/Luat_iot_server项目：使用Luat物联云平台进行固件升级的demo项目
+        (6)新增update/user_server项目：使用用户自己的后台进行固件升级的demo项目
+        (7)mqtt、mqtt_ssl项目：演示如何使用MQTT 3.1.1版本的协议
+
+
+
+发布时间：2017/5/5 23:41
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.1.1
+        (1)新增luatyun.lua和luatyunssl.lua：支持Luat云后台功能
+        (2)新增lbsloc.lua：支持多基站获取经纬度的功能
+    二、demo脚本修改
+        (1)socket/short_connection项目：修正“代码中的一处笔误，会导致重启”的问题
+        (2)新增luatyun项目：Luat云后台TCP连接测试demo项目
+        (3)新增luatyun_ssl项目：Luat云后台SSL连接测试demo项目
+        (4)新增lbs_loc项目：测试多基站获取经纬度功能
+
+
+
+发布时间：2017/5/2 16:11:21
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.1.0
+        (1)net.lua：修改两种状态下的网络指示灯定义“注册上GSM网络，未附着上GPRS网络：亮0.3秒，灭1.7秒”、“附着上GPRS网络，未连接上服务器：亮0.3秒，灭0.7秒”
+        (2)mqtt.lua：connect接口增加一个sckerrcb参数，如果用户自定了此参数，则socket一直重连失败时，不再自动重启，而是去调用sckerrcb
+        (3)nvm.lua：修正“调用restore接口恢复默认参数功能后，内存中的参数没有恢复”的问题
+        (4)新增aliyuniot.lua和aliyuniotauth.lua：支持TCP直连阿里云物联网后台
+        (5)新增linkssl.lua和aliyuniotssl.lua：支持SSL连接阿里云物联网后台
+        (6)新增socketssl.lua：支持SSL的socket连接
+        (7)新增mqttssl.lua：支持MQTT-SSL的client连接
+    二、demo脚本修改
+        (1)mqtt项目：演示mqtt的connect接口中sckerrcb参数的使用方法
+        (2)新增crypto项目：加密算法库使用说明demo项目
+        (3)新增socket_ssl项目：SSL测试项目
+        (4)新增aliyun项目：阿里云物联网后台TCP连接测试demo项目
+        (5)新增aliyun_ssl项目：阿里云物联网后台SSL连接测试demo项目
+        (6)新增uart_prot1项目：通过uart解析外围设备输入的一种报文（起始标志，长度，指令，数据，校验码，结束标志）
+
+
+
+发布时间：2017/4/15 22:31:21
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.0.9
+        (1)audio.lua、cc.lua：支持“呼叫时对方振铃时，通知用户应用程序”的功能
+    二、demo脚本修改
+        (1)call项目：支持“呼叫时对方振铃通知”的处理功能
+
+
+
+发布时间：2017/4/11 11:39:21
+修改记录：
+    一、demo脚本修改
+        (1)default项目：开启看门狗功能
+
+
+
+发布时间：2017/4/9 14:18:21
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.0.8
+        (1)net.lua：新增接口getmulticell，实时获取多基站信息
+        (2)update.lua：修改升级协议，包索引字段扩大为两个字节表示；http://www.luam2m.com/forum.php?mod=viewthread&tid=2397&page=1&extra=#pid6360中的升级协议已做同步修改
+
+
+
+发布时间：2017/4/7 12:01:21
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.0.7
+        (1)audio.lua：修正“通话中正在播放TTS时，对方挂断电话后，后续再建立通话无法播放TTS”的问题
+        (2)record.lua：新增此文件，支持录音功能
+        (3)pins.lua：修正“PIN脚配置的valid为0时，初始化pin脚时的电平错误”的问题
+        (4)mqtt.lua：修正“无法解析payload内容为空的publish消息”的问题；支持中文字符
+        (5)common.lua：新增UTF8编码和GB2312、UCS2编码转换接口
+    二、demo脚本修改
+        (1)default项目：项目ID修改为22
+        (2)socket项目：完善注释
+        (3)xiaoman_gps_tracker\whole_test项目：删除linkapp.lua，直接使用lib中的socket.lua接口；修正sck.lua中的重连问题
+        (4)uart_at_transparent和uart_at_transparent_wdt项目：删除这两个项目。目前AT命令开发版本，已经独立出来
+        (5)record项目：新增此项目，测试录音功能
+        (6)mqtt项目：topic和payload中支持中文字符
+
+
+
+发布时间：2017/3/30 16:52:21
+修改记录：
+    一、demo脚本修改
+        (1)新增default项目：Air200的默认出厂软件，可以使用时间线APP查看模块的基站位置
+           从2017年3月31日起，Air200模块的默认出厂软件划分为两个版本，详见：http://www.luam2m.com/forum.php?mod=viewthread&tid=2504&page=1&extra=#pid6552
+
+
+
+发布时间：2017/3/28 19:54:21
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.0.6
+        (1)sys.lua：扩展opentrace接口功能，通过设置第2个参数，用户可以配置uart1或者uart2输出Lua脚本的trace，默认波特率为115200
+                    注意：配置uart1或者uart2输出trace时，系统不会休眠，如果要求休眠，就不要配置uart输出trace
+        (2)cc.lua：支持通话中的DTMF检测功能
+        (3)audio.lua：支持通话中向对方播放TTS的功能
+    二、demo脚本修改
+        (1)cc项目：支持通话中的DTMF检测以及向对方播放TTS的功能
+
+
+
+发布时间：2017/3/22 19:05:21
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.0.5
+        (1)ntp.lua：新增ntp功能模块，可同步网络时间。直接在main.lua中require"ntp"就可以使用打开此功能
+    二、demo脚本修改
+        (1)ntp项目：新增此项目，测试ntp功能模块
+	(2)json项目：新增此项目，测试json.encode和json.decode接口
+	(3)socket/short_connection项目：增加“发送数据后，延迟5秒钟断开与服务器的连接”的功能
+	(4)修正demo项目中“uart.setup接口调用时传入的最后一个参数msgmode为2”的编码错误问题
+
+
+
+发布时间：2017/3/21 16:08:21
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.0.4
+        (1)mqtt.lua：新增接口configwill，支持WILL功能
+        (1)完善代码注释
+    二、demo脚本修改
+        (1)mqtt项目：支持configwill接口的使用
+
+
+
+发布时间：2017/3/21 10:10:21
+修改记录：
+    一、demo脚本修改
+        (1)socket/long_connection项目：修正“发送数据失败后，无法重连上后台”的问题
+        (2)socket/long_connection_transparent项目：修正“发送数据失败后，无法重连上后台”的问题
+        (3)socket/short_connection_flymode项目：优化代码
+
+
+
+发布时间：2017/3/17 13:47:21
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.0.3
+        (1)sys.lua：支持lib脚本的最小core软件版本号：Luat_V0006_Air200
+    二、demo脚本修改
+        (1)uart_at_transparent项目：关闭UART1全PIN脚功能
+        (2)uart_at_transparent_wdt项目：关闭UART1全PIN脚功能
+
+
+
+发布时间：2017/3/16 00:13:21
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.0.2
+        (1)audio.lua：mic增益默认设置为1级，用户如果需要监听功能调大mic增益，直接调用接口audio.setmicrophonegain(audio.MIC_VOL15)即可
+    二、demo脚本修改
+        (1)uart_at_transparent项目：UART1打开全PIN脚功能
+        (2)uart_at_transparent_wdt项目：UART1打开全PIN脚功能
+        (3)socket/long_connection项目：修正“发送失败后没有自动重连”的问题
+
+
+
+发布时间：2017/3/13 11:55:21
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.0.1
+        (1)nvm.lua：修正“参数存储后，重启失效”的问题
+    二、demo脚本修改
+        (1)新增uart_at_transparent_wdt项目
+        (2)mqtt项目：调用mqttclient:connect时显示传入mqtt的保活时间
+        (3)xiaoman_gps_tracker/gps_test项目：增加gps定位接口和经纬度接口的使用例子
+
+
+
+发布时间：2017/3/9 17:55:21
+修改记录：
+    一、lib脚本修改
+        lib脚本版本号：2.0.0
+        (1)优化所有功能模块的接口封装
+    二、demo脚本修改
+        (1)简化所有项目的使用方式
