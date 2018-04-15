@@ -1,0 +1,38 @@
+
+#=====================================
+##  1 ##
+######## 芯片描述信息 ########
+## ASIC type: gallite/8808/8809
+CT_ASIC         ?= 8955
+
+#=====================================
+##  2 ##
+######### FLASH类型 #########
+## FLASH type: flsh_spi16m/flsh_spi32m
+FLSH_MODEL      ?= flsh_spi32m
+
+## RAM SIZE
+ifeq "${strip ${FLSH_MODEL}}" "flsh_spi16m"
+    RAM_SIZE_FLAG:= __16Mbit__
+endif
+ifeq "${strip ${FLSH_MODEL}}" "flsh_spi32m"
+    RAM_SIZE_FLAG:= __64Mbit__
+endif
+
+#=====================================
+##  3 ##
+######### OpenAT宏 #########
+AM_OPENAT_SUPPORT := TRUE
+
+#该宏DEMO_PROJECT_ENTRY, 用来区别,编译cust_src下的demo,application,test项目
+export DEMO_PROJECT_ENTRY := TRUE
+ifeq ($(strip $(DEMO_PROJECT_ENTRY)), TRUE)
+    LOCAL_EXPORT_FLAG += DEMO_PROJECT_ENTRY
+endif
+
+
+#=====================================
+##  4 ##
+######### 平台模块类型 #########
+## AM MODEL type: A6300A/A6300V/A9351
+AM_MODEL ?= IoT_SDK
