@@ -82,3 +82,8 @@ V1.5.1修改记录
 7. 新增demo_ui
 8. 新增demo_lcd
 8. 新增demo_camera
+
+V1.5.2
+1. 升级基础版本V5135
+2. 添加SPI 全双工不带CS功能
+3. 添加UART波特率UART_BAUD_10400
