@@ -413,7 +413,11 @@ static void camera_open(void)
       CAMERA_IMAGE_FORMAT_YUV422,
       cameraInitReg,
       sizeof(cameraInitReg)/sizeof(AMOPENAT_CAMERA_REG),
-      {0xfd, CAM_BY3A01_ID}
+      {0xfd, CAM_BY3A01_ID},
+      {OPENAT_GPIO_2,OPENAT_GPIO_3,TRUE},
+      5,
+      OPENAT_SPI_MODE_MASTER2_1,
+      OPENAT_SPI_OUT_V0_Y1_U0_Y0
   };
 
   result = iot_camera_init(&initParam);
@@ -445,5 +449,6 @@ VOID app_main(VOID)
 
     iot_os_sleep(3000);
 
+    // 注:摄像头的初始化要放到lcd的后面 
     camera_open();
 }

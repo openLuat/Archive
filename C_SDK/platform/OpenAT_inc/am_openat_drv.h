@@ -954,6 +954,33 @@ typedef enum E_AMOPENAT_CAMERA_IMAGE_FORMAT_TAG
 
 typedef struct 
 {
+    E_AMOPENAT_GPIO_PORT camPdn;
+    E_AMOPENAT_GPIO_PORT camRst;
+    BOOL enable;
+}OPENAT_CAMERA_PIN_CONFIG;
+typedef enum
+{
+    OPENAT_SPI_MODE_NO = 0,         // parallel sensor in use
+    OPENAT_SPI_MODE_SLAVE ,        // SPI sensor as SPI slave
+    OPENAT_SPI_MODE_MASTER1,     // SPI sensor as SPI master, 1 sdo output with SSN 
+    OPENAT_SPI_MODE_MASTER2_1, // SPI sensor as SPI master, 1 sdo output without SSN
+    OPENAT_SPI_MODE_MASTER2_2, // SPI sensor as SPI master, 2 sdos output 
+    OPENAT_SPI_MODE_MASTER2_4, // SPI sensor as SPI master, 4 sdos output
+    OPENAT_SPI_MODE_UNDEF,
+} OPENAT_CAMERA_SPI_MODE_E;
+typedef enum
+{
+    OPENAT_SPI_OUT_Y0_U0_Y1_V0 = 0,
+    OPENAT_SPI_OUT_Y0_V0_Y1_U0,
+    OPENAT_SPI_OUT_U0_Y0_V0_Y1,
+    OPENAT_SPI_OUT_U0_Y1_V0_Y0,
+    OPENAT_SPI_OUT_V0_Y1_U0_Y0,
+    OPENAT_SPI_OUT_V0_Y0_U0_Y1,
+    OPENAT_SPI_OUT_Y1_V0_Y0_U0,
+    OPENAT_SPI_OUT_Y1_U0_Y0_V0,
+} OPENAT_CAMERA_SPI_YUV_OUT_E;
+typedef struct 
+{
   E_OPENAT_DRV_EVT evtId;
   union
   {
@@ -988,6 +1015,10 @@ typedef struct T_AMOPENAT_CAMERA_PARAM_TAG
     UINT16 initRegTableCount;          /* 摄像头初始化指令数 */
 
     AMOPENAT_CAMERA_REG idReg;          /* 摄像头ID寄存器与值 */
+    OPENAT_CAMERA_PIN_CONFIG cameraPin;
+    UINT8 camClkDiv;
+    OPENAT_CAMERA_SPI_MODE_E       spi_mode;
+    OPENAT_CAMERA_SPI_YUV_OUT_E  spi_yuv_out;
 }T_AMOPENAT_CAMERA_PARAM;
 
 // T_AMOPENAT_CAM_PREVIEW_PARAM.encodeQuality video encoding quality
