@@ -55,7 +55,8 @@ my %combine_type_hash = (
     "lua" =>    [BIN_MODE, "LUA_SCRIPT_BASE", "LUA_SCRIPT_SIZE"],
     "openat" => [LOD_MODE, "CUST_BASE", "CUST_SIZE"],
     "user" =>   [BIN_MODE, "USER_CONFIG_DATA_BASE", "USER_CONFIG_DATA_SIZE"],
-    "loader" => [LOD_MODE, "CUST_LOADER_BASE", "CUST_LOADER_SIZE"]
+    "loader" => [LOD_MODE, "CUST_LOADER_BASE", "CUST_LOADER_SIZE"],
+    "boot" =>   [LOD_MODE, "AM_BL_ADDR", "AM_BL_SIZE"]
 );
 
 #/*********************************************************

@@ -148,6 +148,16 @@ ifneq "${AM_MODEL}" ""
         endif
         export AM_PLT_LOD_FILE
     endif
+    AM_BOOT_LOD_PATH := ${SOFT_WORKDIR}/platform/${strip ${AM_MODEL}}/boot
+    AM_BOOT_LOD_FILE := ${wildcard ${AM_BOOT_LOD_PATH}/*.lod}
+    ifeq "${words ${AM_BOOT_LOD_FILE}}" "0"
+        ${warning WARNING: No platform lod file at path: ${AM_BOOT_LOD_PATH}}
+    else
+        ifneq "${words ${AM_BOOT_LOD_FILE}}" "1"
+            ${error ERROR: More than one platform lod file at path: ${AM_BOOT_LOD_PATH}}
+        endif
+        export AM_BOOT_LOD_FILE
+    endif
     
     export AM_MODEL
 endif
@@ -477,6 +487,7 @@ AM_PLT_WITH_LOADER_FILE:=`find $(AM_PLT_WITH_LOADER_FILE_DIR) -name "*.lod"`
 AM_PLT_WITH_LOADER_FILE_CNT:=`find $(AM_PLT_WITH_LOADER_FILE_DIR) -name "*.lod" | wc -l`
 else
 WITH_PLT_LOD_FILE := ${BAS_FINAL}_${PLT_LOD_VERSION}.lod
+WITH_PLT_BOOT_LOD_FILE := ${BAS_FINAL}_${PLT_LOD_VERSION}_BOOT.lod
 endif
 #/*+\NEW\xiongjunqun\2014.03.25\¿ª·¢open loader*/#
 CFG_Lod_File_WITH_PLT := `echo ${BAS_FINAL}_\`echo ${AM_PLT_LOD_FILE} | sed 's/.*SW_V\([0-9]*\).*\.lod$$/B\1/'\`.lod  | sed 's/.*\(SW_.*\.lod\)$$/\1/'`
@@ -815,6 +826,24 @@ ifneq "${AM_PLT_LOD_FILE}" ""
 			${ECHO} "LODCOMBINE        Combine sucessful";                                     \
 		else                                                                                    \
 			${ECHO} "LODCOMBINE        Cannot find Platform lod file:$(AM_PLT_LOD_FILE)";   \
+		fi;                                                                                     \
+	else                                                                                        \
+		${ECHO} "LODCOMBINE        Cannot find lod file:$(LOD_FILE)";		            \
+	fi;
+endif
+ifneq "${AM_BOOT_LOD_FILE}" ""
+	@${ECHO}
+	@${ECHO} "LODCOMBINE        Combine with boot lod"
+	if [ -f $(LOD_FILE) ]; then                                                                 \
+		if [ -f $(AM_BOOT_LOD_FILE) ]; then                                                       \
+			$(LODCOMBINE_TOOL) boot -l $(WITH_PLT_LOD_FILE) -i $(AM_BOOT_LOD_FILE)  -o $(WITH_PLT_BOOT_LOD_FILE); \
+			if [ $$? -gt 0 ]; then \
+				${ECHO} "LODCOMBINE        Combine failed";   \
+				exit 1; \
+			fi;\
+			${ECHO} "LODCOMBINE        Combine sucessful";                                     \
+		else                                                                                    \
+			${ECHO} "LODCOMBINE        Cannot find Platform lod file:$(AM_BOOT_LOD_FILE)";   \
 		fi;                                                                                     \
 	else                                                                                        \
 		${ECHO} "LODCOMBINE        Cannot find lod file:$(LOD_FILE)";		            \
