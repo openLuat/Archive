@@ -109,3 +109,7 @@ V1.6.1
 1. IOT_SDK_UI 升级基础版本5269
 2. IOT_SDK_UI 添加虚拟sim卡功能
 3. IOT_SDK_UI 添加bootloader串口下载功能
+
+V1.6.2
+1. IOT_SDK_UI,IOT_SDK基础版本升级到5387
+2. IOT_SDK_UI,IOT_SDK 更新VSIM库
