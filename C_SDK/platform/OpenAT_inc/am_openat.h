@@ -48,6 +48,7 @@
 /*-\NEW\WZQ\2014.11.7\加入SSL RSA功能*/
 
 #include "am_openat_image.h"
+#include "am_openat_crypto.h"
 
 typedef struct T_AMOPENAT_INTERFACE_VTBL_TAG
 {
@@ -705,6 +706,7 @@ typedef struct T_AMOPENAT_INTERFACE_VTBL_TAG
                             UINT16 realHeight,                  /* 实际LCD RAM 高度 */
                             UINT16 realWidth                    /* 实际LCD RAM 宽度，必须是4的倍数 */
                           );
+    BOOL (*close_lcd)();
     /* COLOR */                                                 /* 彩色屏 */
     BOOL (*init_color_lcd)(                                     /* 屏幕初始化接口 */
                             T_AMOPENAT_COLOR_LCD_PARAM *param   /* 彩屏初始化参数 */
@@ -1182,6 +1184,10 @@ typedef struct T_AMOPENAT_INTERFACE_VTBL_TAG
                                 T_AMOPENAT_IMAGE_INFO *imageinfo
                             );
     
+    INT32 (*imgs_decode_jpeg_buffer)(
+                                CONST char * buffer,
+                                T_AMOPENAT_IMAGE_INFO *imageinfo
+                            );
     INT32 (*imgs_free_jpeg_decodedata)(
                                     UINT16* buffer
                             );      
@@ -1196,6 +1202,22 @@ typedef struct T_AMOPENAT_INTERFACE_VTBL_TAG
                             UINT16 right, 
                             UINT16 bottom
                           );
+    VOID (*sha256_init)(
+            AMOPENAT_SHA256_CTX *pCtx
+        );
+    VOID (*sha256_update)(
+            AMOPENAT_SHA256_CTX *pCtx,
+            UINT8 *pData,
+            INT32 nLen
+        );
+    VOID (*sha256_final)(
+            AMOPENAT_SHA256_CTX *pCtx,
+            UINT8 *pDigest
+        );
+	int (*zbar_scannerOpen)(int width, int height, int size, unsigned char *data);
+	char *(*zbar_getData)(int handle, int *len);
+	BOOL (*zbar_findNextData)(int handle);
+	void (*zbar_scannerClose)(int handle);
 }T_AMOPENAT_INTERFACE_VTBL;
 
 /*+\BUG WM-656\lifei\2013.03.07\[OpenAT] 修改cust区域检查条件*/
