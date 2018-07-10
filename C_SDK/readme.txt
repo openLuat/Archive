@@ -117,3 +117,8 @@ V1.6.2
 V1.7
 1. IOT_SDK_UI,IOT_SDK基础版本升级到5408
 2. 添加二维码解码项目DEMO_ZBAR
+
+V1.7.1
+1. IOT_SDK_UI,IOT_SDK基础版本升级到5421
+2. 添加zbar多种编码解析格式如下:
+		EAN-13/UPC-A, UPC-E, EAN-8, Code 128, Code 39, Interleaved 2 of 5 and QR Code.

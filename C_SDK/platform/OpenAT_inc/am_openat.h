@@ -420,6 +420,7 @@ typedef struct T_AMOPENAT_INTERFACE_VTBL_TAG
                        );
 
     void (*sys32k_clk_out)(bool);//接口为9501初始化提供32K时钟频率
+	void (*sys26m_auxclk_out)(bool);
 /*+NEW OPEANT-104\RUFEI\2014.6.17\ 增加获取开机原因值接口*/
 
      E_AMOPENAT_POWERON_REASON (*get_poweronCasue )(                            /*获取开机原因值*/
@@ -1217,6 +1218,7 @@ typedef struct T_AMOPENAT_INTERFACE_VTBL_TAG
 	int (*zbar_scannerOpen)(int width, int height, int size, unsigned char *data);
 	char *(*zbar_getData)(int handle, int *len);
 	BOOL (*zbar_findNextData)(int handle);
+  char *(*zbar_getType)(int handle);
 	void (*zbar_scannerClose)(int handle);
 }T_AMOPENAT_INTERFACE_VTBL;
 

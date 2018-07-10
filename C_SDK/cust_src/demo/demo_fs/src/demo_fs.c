@@ -23,7 +23,7 @@ BOOL demo_fs_create(char* file)
 {
     INT32 fd;
 
-    fd = iot_fs_open_file(file, SF_RDONLY);
+    fd = iot_fs_open_file(file, O_RDONLY);
 
     if (fd >= 0) //DEMO_FS_FILE_PATHÎÄ¼þ´æÔÚ
     {
@@ -46,7 +46,7 @@ VOID demo_fs_read(char* file)
     UINT8 read_buff[64] = {0};
     INT32 read_len;
     
-    fd = iot_fs_open_file(file, SF_RDONLY);
+    fd = iot_fs_open_file(file, O_RDONLY);
 
     if (fd < 0)
         return;
@@ -67,7 +67,7 @@ VOID demo_fs_write(char* file)
     UINT8 *write_buff = "hello world";
     INT32 write_len;
     
-    fd = iot_fs_open_file(file, SF_WRONLY);
+    fd = iot_fs_open_file(file, O_WRONLY);
 
     if (fd < 0)
         return;

@@ -228,10 +228,10 @@ void lcdMsgCallback(T_AMOPENAT_LCD_MESSAGE *pMsg)
                 T_AMOPENAT_LCD_REFRESH_REQ *pRefreshReq = &pMsg->param.refreshReq;
 
                 // 打印updata的时间间隔
-                lcdMsgCallbacktime();
-                
-				// 获取camera得到的数据， 发送到zbartask 去解析
-				lcdZbarMsgSend((unsigned char *)pRefreshReq->pFrameBuffer);
+                //lcdMsgCallbacktime();
+                        
+                // 获取camera得到的数据， 发送到zbartask 去解析
+                  lcdZbarMsgSend((unsigned char *)pRefreshReq->pFrameBuffer);
 
                 // update lcd显示camera数据
                 lcdSetWindowAddress(&pRefreshReq->rect);
@@ -242,6 +242,8 @@ void lcdMsgCallback(T_AMOPENAT_LCD_MESSAGE *pMsg)
         default:
             break;
     }
+
+
 }
 
 void lcd_led(void)
@@ -276,6 +278,7 @@ void lcd_open(void)
 
     // 打开背光
     lcd_led();
+
 }
 #endif
 

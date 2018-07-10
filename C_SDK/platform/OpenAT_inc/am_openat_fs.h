@@ -30,40 +30,36 @@
 #define FS_NR_DIR_LAYERS_MAX             16
 
 // Max folder or File name size in byts for uincode.
-#define FS_FILE_NAME_UNICODE_LEN    (2*FS_FILE_NAME_LEN) 
 
 // Max path size for unicode.
-#define FS_PATH_UNICODE_LEN              (2*FS_PATH_LEN) 
 
 // Length of terminated character('\0' for OEM).
 #define LEN_FOR_NULL_CHAR                   1
 
 // Size of terminated character('\0' for Unicode).
-#define LEN_FOR_UNICODE_NULL_CHAR   2
 
 /****************************** FILE SYSTEM ******************************/
 typedef enum E_AMOPENAT_FILE_OPEN_FLAG_TAG
 {
-    SF_APPEND = (1 << 0),
-    SF_TRUNC  = (1 << 1),
-    SF_CREAT =  (1 << 2),
-    SF_RDONLY = (1 << 3),
-    SF_WRONLY = (1 << 4),
-    SF_RDWR = (SF_RDONLY | SF_WRONLY),
-    SF_DIRECT = (1 << 5),
-    SF_EXCL  =(1 << 6)
+    O_APPEND = (8),
+    O_TRUNC  = 0x400,
+    O_CREAT =  0x200,
+    O_RDONLY = (0),
+    O_WRONLY = (1),
+    O_RDWR = (2),
+    O_EXCL  = 0x800
 }E_AMOPENAT_FILE_OPEN_FLAG;
 
 typedef enum E_AMOPENAT_FILE_SEEK_FLAG_TAG
 {
     // Seek from beginning of file.
-    SF_SEEK_SET = 0,
+    SEEK_SET = 0,
 
     // Seek from current position.
-    SF_SEEK_CUR = 1,
+    SEEK_CUR = 1,
 
     // Set file pointer to EOF plus "offset"
-    SF_SEEK_END = 2,
+    SEEK_END = 2,
 }E_AMOPENAT_FILE_SEEK_FLAG;
 
 #define OPENAT_VALIDATE_FILE_HANDLE_START 0
@@ -98,57 +94,33 @@ typedef struct T_AMOPENAT_FS_FIND_DATA_TAG
     UINT32  atime;    // Time of last access to the file
     UINT32  mtime;   // Time of last data modification
     UINT32  ctime;    // Time of last status(or inode) change
-    UINT8   st_name[ FS_FILE_NAME_UNICODE_LEN + LEN_FOR_UNICODE_NULL_CHAR ]; // The name of file. 
+    UINT8   st_name[ FS_FILE_NAME_LEN + LEN_FOR_NULL_CHAR ]; // The name of file. 
 }AMOPENAT_FS_FIND_DATA,*PAMOPENAT_FS_FIND_DATA;
 
 typedef enum E_AMOPENAT_FS_ERR_CODE_TAG
 {
-    ERR_FS_NOT_MOUNTED = -10000,
-    ERR_FS_FULL = -10001,
-    ERR_FS_NOT_FOUND = -10002,
-    ERR_FS_END_OF_OBJECT = -10003,
-    ERR_FS_DELETED = -10004,
-    ERR_FS_NOT_FINALIZED = -10005,
-    ERR_FS_NOT_INDEX = -10006,
-    ERR_FS_OUT_OF_FILE_DESCS = -10007,
-    ERR_FS_FILE_CLOSED = -10008,
-    ERR_FS_FILE_DELETED = -10009,
-    ERR_FS_BAD_DESCRIPTOR = -10010,
-    ERR_FS_IS_INDEX = -10011,
-    ERR_FS_IS_FREE = -10012,
-    ERR_FS_INDEX_SPAN_MISMATCH = -10013,
-    ERR_FS_DATA_SPAN_MISMATCH = -10014,
-    ERR_FS_INDEX_REF_FREE = -10015,
-    ERR_FS_INDEX_REF_LU = -10016,
-    ERR_FS_INDEX_REF_INVALID = -10017,
-    ERR_FS_INDEX_FREE = -10018,
-    ERR_FS_INDEX_LU = -10019,
-    ERR_FS_INDEX_INVALID = -10020,
-    ERR_FS_NOT_WRITABLE = -10021,
-    ERR_FS_NOT_READABLE = -10022,
-    ERR_FS_CONFLICTING_NAME = -10023,
-    ERR_FS_NOT_CONFIGURED = -10024,
-    ERR_FS_NOT_A_FS = -10025,
-    ERR_FS_MOUNTED = -10026,
-    ERR_FS_ERASE_FAIL = -10027,
-    ERR_FS_MAGIC_NOT_POSSIBLE = -10028,
-    ERR_FS_NO_DELETED_BLOCKS = -10029,
-    ERR_FS_FILE_EXISTS = -10030,
-    ERR_FS_NOT_A_FILE = -10031,
-    ERR_FS_RO_NOT_IMPL = -10032,
-    ERR_FS_RO_ABORTED_OPERATION = -10033,
-    ERR_FS_PROBE_TOO_FEW_BLOCKS = -10034,
-    ERR_FS_PROBE_NOT_A_FS = -10035,
-    ERR_FS_NAME_TOO_LONG = -10036,
-    ERR_FS_IX_MAP_UNMAPPED = -10037,
-    ERR_FS_IX_MAP_MAPPED = -10038,
-    ERR_FS_IX_MAP_BAD_RANGE = -10039,
-    ERR_FS_SEEK_BOUNDS = -10040,
-    ERR_FS_WRONG_PARAMETER = -10041,
-    ERR_FS_PATH_NOT_FOUND  = -10042,
-    ERR_FS_INTERNAL = -10050,
-    ERR_FS_TEST = -10100,
-    ERR_FS_OPEN_DEV_FAILED  = -10101,
+    ERR_FS_OK = 0,
+    ERR_FS_FILE_EXIST        = -4200001,
+    ERR_FS_NO_DEVICE         = -4200002,
+    ERR_FS_NO_SPACE          = -4200003,
+    ERR_FS_ASSERTION_FAIL    = -4200004,
+    ERR_FS_NOT_INIT          = -4200005,
+    ERR_FS_NO_ENTRY          = -4200006,
+    ERR_FS_NO_DIR            = -4200007,
+    ERR_FS_TOO_MANY_FILES    = -4200008,
+    ERR_FS_INVALID_PARAMETER = -4200009,
+    ERR_FS_DENIED            = -4200010,
+    ERR_FS_WRITE_PROTECTED   = -4200011,
+    ERR_FS_NO_MORE_MEMORY    = -4200012,
+    ERR_FS_DEAD_LOCK         = -4200013,
+    ERR_FS_TIMEOUT           = -4200014,
+    ERR_FS_INVALID_OBJECT    = -4200015,
+    ERR_FS_IO                = -4200016,
+    ERR_FS_NOT_IMPLEMENTED   = -4200017,
+    ERR_FS_ERANGE            = -4200018,
+    ERR_FS_DIR_NOT_EMTPY     = -4200019,
+    ERR_FS_OPERATION_NOT_IMP = -4200020,
+    ERR_FS_DISK_NO_SPACE     = -4200021,
 }E_AMOPENAT_FS_ERR_CODE;
 
 typedef struct T_AMOPENAT_TFLASH_INIT_PARAM_TAG

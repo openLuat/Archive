@@ -35,6 +35,15 @@ BOOL iot_zbar_findNextData(int handle)
     return IVTBL(zbar_findNextData)(handle);
 }
 
+/**获取当前数据编码的格式
+*@param		handle:		句柄,由iot_zbar_scannerOpen生成
+*@return	返回的格式类型
+**/
+char * iot_zbar_getType(int handle)
+{
+  return IVTBL(zbar_getType)(handle);
+}
+
 /**释放句柄
 *@param		handle:		句柄,由iot_zbar_scannerOpen生成
 *@return    void	

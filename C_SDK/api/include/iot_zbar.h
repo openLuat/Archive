@@ -31,6 +31,12 @@ char * iot_zbar_getData(int handle, int *len);
 **/
 BOOL iot_zbar_findNextData(int handle);
 
+/**获取当前数据编码的格式
+*@param		handle:		句柄,由iot_zbar_scannerOpen生成
+*@return	返回的格式类型
+**/
+char * iot_zbar_getType(int handle);
+
 /**释放句柄
 *@param		handle:		句柄,由iot_zbar_scannerOpen生成
 *@return    void	

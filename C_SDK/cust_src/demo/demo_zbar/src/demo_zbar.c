@@ -15,11 +15,11 @@ ZBAR_CONTEXT g_zbar_context;
 static char zbar_uart_wirte_buff[512];
 static int scannerCount = 0;
 
-static void zbar_uart_write(int width, int height, char *scannerData, int time1, int time2)
+static void zbar_uart_write(int width, int height, char *scannerData, char* fmt, int time2)
 {  
     memset(zbar_uart_wirte_buff, 0, sizeof(zbar_uart_wirte_buff));
-    sprintf(zbar_uart_wirte_buff, "(%d*%d)scannerCount %d, scannerData: %s, len %d, time1 %d, time2 %d\r\n", 
-        width, height, scannerCount++,scannerData, strlen(scannerData), time1, time2);
+    sprintf(zbar_uart_wirte_buff, "(%d*%d)%d,data:%s:%d,code:%s, time %d\r\n", 
+        width, height, scannerCount++,scannerData, strlen(scannerData), fmt, time2);
     iot_uart_write(OPENAT_UART_1, zbar_uart_wirte_buff, strlen(zbar_uart_wirte_buff));
 }
 
@@ -71,15 +71,15 @@ static void zbar_scanner_run(int width, int height, int size, char *dataInput)
 		do
 		{        
 			// 解码成功获取二维码信息
-			data = iot_zbar_getData(handle, &len);
-			data[len] = 0;
+			      data = iot_zbar_getData(handle, &len);
+			      data[len] = 0;
 
             // 将获取的数据通过串口显示
             tick3 = iot_os_get_system_tick();
             time1 = (tick3 - tick1) * 1000 / 16384;
             time2 = (tick3 - tick2) * 1000 / 16384;
             tick1 = iot_os_get_system_tick();
-            zbar_uart_write(width, height, data, time1, time2);
+            zbar_uart_write(width, height, data, iot_zbar_getType(handle), time2);
             
 			iot_debug_print("[zbar] zbar_scanner_run come in handle_data %s", data);
 
